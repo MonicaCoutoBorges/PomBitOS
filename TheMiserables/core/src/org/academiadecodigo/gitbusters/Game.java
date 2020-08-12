@@ -10,6 +10,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.map.Map;
+import org.academiadecodigo.gitbusters.map.Objects.AbstractMapObject;
+
+import java.util.Iterator;
 
 public class Game extends ApplicationAdapter {
 
@@ -76,19 +79,26 @@ public class Game extends ApplicationAdapter {
 //		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-			hero.getRectangle().y = hero.getRectangle().y + Game.cellSize;
+			hero.getRectangle().y += Game.cellSize;
 		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-			hero.getRectangle().y = hero.getRectangle().y - Game.cellSize;
+			hero.getRectangle().y -= Game.cellSize;
 		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			hero.getRectangle().x = hero.getRectangle().x - Game.cellSize;
+			hero.getRectangle().x -= Game.cellSize;
 		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			hero.getRectangle().x = hero.getRectangle().x + Game.cellSize;
+			hero.getRectangle().x += Game.cellSize;
+		}
+
+		for (Iterator<Rectangle> iter = map.getObjectRectangles().iterator(); iter.hasNext();){
+			Rectangle mapObject = iter.next();
+			if (hero.getRectangle().overlaps(mapObject)){
+				System.exit(1);
+			}
 		}
 
 

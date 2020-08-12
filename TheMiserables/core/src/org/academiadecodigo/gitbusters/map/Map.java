@@ -2,6 +2,7 @@ package org.academiadecodigo.gitbusters.map;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.Game;
 import org.academiadecodigo.gitbusters.map.Objects.*;
 
@@ -22,6 +23,19 @@ public class Map {
          objects = new ArrayList<>();
     }
 
+    public List<AbstractMapObject> getObjects() {
+        return objects;
+    }
+
+    public ArrayList<Rectangle> getObjectRectangles(){
+        ArrayList<Rectangle> rectangles = new ArrayList<>();
+        for (AbstractMapObject object : objects){
+            rectangles.add(object.getRectangle());
+        }
+
+        return rectangles;
+    }
+
     public void drawMap(){
 
         map = new AbstractMapObject[11][12];
@@ -32,10 +46,10 @@ public class Map {
                 switch (mapArray[i][j]){
                     case '_':
                         Floor floor = new Floor();
-                        objects.add(floor);
                         map[i][j] = floor;
                         floor.getRectangle().x = j * Game.cellSize;
                         floor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        objects.add(floor);
                         batch.draw(floor.getImage(),floor.getRectangle().x,floor.getRectangle().y);
                         break;
                     /**case 'T':
@@ -48,18 +62,18 @@ public class Map {
                         break;*/
                     case 'X':
                         Wall wall = new Wall();
-                        objects.add(wall);
                         map[i][j] = wall;
                         wall.getRectangle().x = j * 28;
                         wall.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        objects.add(wall);
                         batch.draw(wall.getImage(),wall.getRectangle().x,wall.getRectangle().y);
                         break;
                     case 'Y':
                         CellDoor cellDoor = new CellDoor();
-                        objects.add(cellDoor);
                         map[i][j] = cellDoor;
                         cellDoor.getRectangle().x = j * 28;
                         cellDoor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        objects.add(cellDoor);
                         batch.draw(cellDoor.getImage(),cellDoor.getRectangle().x,cellDoor.getRectangle().y);
                         break;
                         /**
