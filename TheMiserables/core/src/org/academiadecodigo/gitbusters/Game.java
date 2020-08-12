@@ -2,6 +2,7 @@ package org.academiadecodigo.gitbusters;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -22,6 +23,11 @@ public class Game extends ApplicationAdapter {
 
 	public final static int cellSize = 28;
 
+	private float x = cellSize;
+	private float y = cellSize;
+
+	private Texture image;
+
 
 	@Override
 	public void create () {
@@ -37,6 +43,8 @@ public class Game extends ApplicationAdapter {
 
 		this.hero = new Hero();
 
+		image = hero.getTexture();
+
 
 	}
 
@@ -49,11 +57,51 @@ public class Game extends ApplicationAdapter {
 		batch.begin();
 		map.drawMap();
 		hero.drawHero();
+
+
+//		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+//			hero.getRectangle().x -= cellSize * Gdx.graphics.getDeltaTime();
+//		}
+//
+//		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+//			hero.getRectangle().x += cellSize * Gdx.graphics.getDeltaTime();
+//		}
+//
+//		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+//			hero.getRectangle().y -= cellSize * Gdx.graphics.getDeltaTime();
+//		}
+//
+//		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+//			hero.getRectangle().y += cellSize * Gdx.graphics.getDeltaTime();
+//		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+			hero.getRectangle().y = hero.getRectangle().y + Game.cellSize;
+		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+			hero.getRectangle().y = hero.getRectangle().y - Game.cellSize;
+		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+			hero.getRectangle().x = hero.getRectangle().x - Game.cellSize;
+		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			hero.getRectangle().x = hero.getRectangle().x + Game.cellSize;
+		}
+
+
 		batch.end();
+
+
 	}
 	
 	@Override
 	public void dispose () {
+
+		image.dispose();
+		batch.dispose();
 
 	}
 
