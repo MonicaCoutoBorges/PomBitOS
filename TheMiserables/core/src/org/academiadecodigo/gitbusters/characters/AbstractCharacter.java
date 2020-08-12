@@ -12,23 +12,36 @@ public abstract class AbstractCharacter implements Character{
 
     public SpriteBatch batch;
 
+    private Character character;
+
     @Override
     public Rectangle getCharacterDraw() {
-        return null;
+        return rectangle;
     }
 
     @Override
     public Texture getCharacter() {
-        return null;
+        return texture;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public Texture getTexture() {
+        return texture;
+    }
+
+    public void setRectangle(Rectangle rectangle) {
+        this.rectangle = rectangle;
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
     }
 
     @Override
     public void createCharacter() {
 
-        heroDraw = new Rectangle();
-        heroDraw.x = 200;
-        heroDraw.y = 20;
-        heroDraw.width = 28;
-        heroDraw.height = 28;
     }
 }

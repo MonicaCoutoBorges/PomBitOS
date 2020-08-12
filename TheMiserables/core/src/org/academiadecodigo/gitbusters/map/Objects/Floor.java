@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Floor extends AbstractMapObject {
 
     public Floor(){
-        setImage(new Texture(Gdx.files.internal("")));
+        setImage(new Texture(Gdx.files.internal("Floor/Floor.png")));
         setRectangle(new Rectangle());
     }
 }

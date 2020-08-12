@@ -8,23 +8,32 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.characters.Hero;
+import org.academiadecodigo.gitbusters.map.Map;
 
 public class Game extends ApplicationAdapter {
 
-	private Hero hero = new Hero();
-	
-	public final static SpriteBatch batch = new SpriteBatch();
+	private Hero hero;
+
+	public static SpriteBatch batch;
+
+	private Map map;
 
 	private OrthographicCamera camera;
+
+	public final static int cellSize = 28;
 
 
 	@Override
 	public void create () {
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 336, 308);
+		camera.setToOrtho(true, 336, 308);
 
-		hero.createHero();
+		batch = new SpriteBatch();
+
+		this.map = new Map();
+
+		this.hero = new Hero();
 
 	}
 
@@ -35,6 +44,7 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
+		map.drawMap();
 		hero.drawHero();
 		batch.end();
 	}

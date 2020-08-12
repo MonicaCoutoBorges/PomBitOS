@@ -2,7 +2,6 @@ package org.academiadecodigo.gitbusters.map;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import org.academiadecodigo.gitbusters.Game;
 import org.academiadecodigo.gitbusters.map.Objects.*;
 
@@ -17,7 +16,7 @@ public class Map {
     private SpriteBatch batch;
 
 
-    public Map(MapArray mapArray){
+    public Map(){
          this.mapArray = MapArray.map0;
          this.batch = Game.batch;
          objects = new ArrayList<>();
@@ -28,18 +27,18 @@ public class Map {
         map = new AbstractMapObject[11][12];
 
 
-        for(int i = 0; i < mapArray.length; i++){
-            for(int j = 0; j < mapArray[i].length; j++){
+        for(int i = mapArray.length-1; i >= 0; i--){
+            for(int j = mapArray[i].length-1; j >= 0 ; j--){
                 switch (mapArray[i][j]){
                     case '_':
                         Floor floor = new Floor();
                         objects.add(floor);
                         map[i][j] = floor;
-                        floor.getRectangle().x = (j + 1) * 28;
-                        floor.getRectangle().y = (i + 1) * 28;
+                        floor.getRectangle().x = j * Game.cellSize;
+                        floor.getRectangle().y = i * Game.cellSize;
                         batch.draw(floor.getImage(),floor.getRectangle().x,floor.getRectangle().y);
                         break;
-                    case 'T':
+                    /**case 'T':
                         FinalGate finalGate = new FinalGate();
                         objects.add(finalGate);
                         map[i][j] = finalGate;
@@ -70,7 +69,7 @@ public class Map {
                         aSwitch.getRectangle().x = (j + 1) * 28;
                         aSwitch.getRectangle().y = (i + 1) * 28;
                         batch.draw(aSwitch.getImage(),aSwitch.getRectangle().x,aSwitch.getRectangle().y);
-                        break;
+                        break;*/
                 }
             }
         }

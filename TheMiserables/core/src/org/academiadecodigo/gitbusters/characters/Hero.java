@@ -2,35 +2,26 @@ package org.academiadecodigo.gitbusters.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import org.academiadecodigo.gitbusters.Game;
 
 public class Hero extends AbstractCharacter{
 
-    private Texture hero;
-    private Rectangle heroDraw;
+    private SpriteBatch batch;
 
-
-    public Rectangle getHeroDraw() {
-        return heroDraw;
-    }
-
-    public Texture getHero() {
-        return hero;
-    }
-
-    public void createHero() {
-        hero = new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/RevolutionaryFoward.png"));
-
-        heroDraw = new Rectangle();
-        heroDraw.x = 200;
-        heroDraw.y = 20;
-        heroDraw.width = 28;
-        heroDraw.height = 28;
-
+    public Hero(){
+        setTexture(new Texture(Gdx.files.internal("RevolutionaryFoward.png")));
+        setRectangle(new Rectangle());
+        batch = Game.batch;
     }
 
     public void drawHero() {
-        batch.draw(hero, heroDraw.x, heroDraw.y);
+        getRectangle().x = 3 * 28;
+        getRectangle().y = 9 * 28;
+        getRectangle().width = 28;
+        getRectangle().height = 28;
+        batch.draw(getTexture(), getRectangle().x, getRectangle().y);
     }
 
 
