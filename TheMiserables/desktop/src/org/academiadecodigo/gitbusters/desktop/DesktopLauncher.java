@@ -11,5 +11,7 @@ public class DesktopLauncher {
 		config.height = 308;
 		config.title = "The Miserables";
 		new LwjglApplication(new Game(), config);
+
+		config.foregroundFPS = 25;
 	}
 }

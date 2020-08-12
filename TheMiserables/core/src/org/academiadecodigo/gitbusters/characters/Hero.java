@@ -8,19 +8,27 @@ import org.academiadecodigo.gitbusters.Game;
 
 public class Hero extends AbstractCharacter{
 
+
     private SpriteBatch batch;
 
+
     public Hero(){
-        setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryFront.png")));
+
+        setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryFront.png")));
+
         setRectangle(new Rectangle());
         batch = Game.batch;
+        getRectangle().x = Game.cellSize;
+        getRectangle().y = Game.cellSize;
+
+        getRectangle().width = Game.cellSize;
+        getRectangle().height = Game.cellSize;
     }
 
     public void drawHero() {
-        getRectangle().x = 3 * 28;
-        getRectangle().y = 9 * 28;
-        getRectangle().width = 28;
-        getRectangle().height = 28;
+
+
+
         batch.draw(getTexture(), getRectangle().x, getRectangle().y);
     }
 
