@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Switch extends AbstractMapObject {
 
+
     public enum SwitchType {
         BLUE,
         PINK
@@ -21,6 +22,7 @@ public class Switch extends AbstractMapObject {
             setImage(new Texture(Gdx.files.internal("Switch/FloorSwitchPink.png")));
             color = SwitchType.PINK;
         }
+
         setRectangle(new Rectangle());
     }
 }

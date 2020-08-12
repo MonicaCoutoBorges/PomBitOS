@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class CellDoor extends AbstractMapObject {
 
+
     public enum DoorType{
         BLUE,
         PINK
@@ -21,6 +22,7 @@ public class CellDoor extends AbstractMapObject {
             setImage(new Texture(Gdx.files.internal("Doors/DoorPink.png")));
             color = DoorType.PINK;
         }
+
         setRectangle(new Rectangle());
     }
 }

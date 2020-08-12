@@ -83,6 +83,8 @@ public class Game extends ApplicationAdapter {
 //		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryBack.png")));
 			float y = hero.getRectangle().y;
 			hero.getRectangle().y += Game.cellSize;
 			for (AbstractMapObject object: map.getObjects()){
@@ -93,6 +95,8 @@ public class Game extends ApplicationAdapter {
 		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryFront.png")));
 			float y = hero.getRectangle().y;
 			hero.getRectangle().y -= Game.cellSize;
 			for (AbstractMapObject object: map.getObjects()){
@@ -103,6 +107,8 @@ public class Game extends ApplicationAdapter {
 		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryLeft.png")));
 			float x = hero.getRectangle().x;
 			float y = hero.getRectangle().y;
 			hero.getRectangle().x -= Game.cellSize;
@@ -114,6 +120,8 @@ public class Game extends ApplicationAdapter {
 		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryRight.png")));
 			float x = hero.getRectangle().x;
 			hero.getRectangle().x += Game.cellSize;
 			for (AbstractMapObject object: map.getObjects()){
