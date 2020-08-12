@@ -29,6 +29,10 @@ public class Hero extends AbstractCharacter{
 
     }
 
+    public void drawHero() {
+        batch.draw(hero, heroDraw.x, heroDraw.y);
+    }
+
 
 
 

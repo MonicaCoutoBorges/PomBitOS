@@ -12,17 +12,7 @@ import org.academiadecodigo.gitbusters.characters.Hero;
 public class Game extends ApplicationAdapter {
 
 	private Hero hero = new Hero();
-
-	//private Texture hero;
-	//private Rectangle heroDraw;
-
-	private Texture guard;
-	private Texture slave;
-
-
-	private Rectangle guardDraw;
-	private Rectangle slaveDraw;
-
+	
 	public final static SpriteBatch batch = new SpriteBatch();
 
 	private OrthographicCamera camera;
@@ -30,21 +20,11 @@ public class Game extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-		//guard = new Texture(Gdx.files.internal());
-		//slave = new Texture(Gdx.files.internal());
-
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 336, 308);
 
 		hero.createHero();
-		//hero = new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/RevolutionaryFoward.png"));
-
-//		heroDraw = new Rectangle();
-//		heroDraw.x = 200;
-//		heroDraw.y = 20;
-//		heroDraw.width = 28;
-//		heroDraw.height = 28;
 
 	}
 
@@ -55,7 +35,7 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		batch.draw(hero.getHero(), hero.getHeroDraw().x, hero.getHeroDraw().y);
+		hero.drawHero();
 		batch.end();
 	}
 	
