@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.Objects.AbstractMapObject;
+import org.academiadecodigo.gitbusters.map.Objects.Switch;
 
 import java.util.Iterator;
 
@@ -30,6 +31,8 @@ public class Game extends ApplicationAdapter {
 	private float y = cellSize;
 
 	private Texture image;
+
+	private int counter = 0;
 
 
 	@Override
@@ -60,6 +63,7 @@ public class Game extends ApplicationAdapter {
 		batch.begin();
 		map.drawMap();
 		hero.drawHero();
+		batch.end();
 
 
 //		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
@@ -79,30 +83,49 @@ public class Game extends ApplicationAdapter {
 //		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+			float y = hero.getRectangle().y;
 			hero.getRectangle().y += Game.cellSize;
-		}
-
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-			hero.getRectangle().y -= Game.cellSize;
-		}
-
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			hero.getRectangle().x -= Game.cellSize;
-		}
-
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			hero.getRectangle().x += Game.cellSize;
-		}
-
-		for (Iterator<Rectangle> iter = map.getObjectRectangles().iterator(); iter.hasNext();){
-			Rectangle mapObject = iter.next();
-			if (hero.getRectangle().overlaps(mapObject)){
-				System.exit(1);
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().y = y;
+				}
 			}
 		}
 
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+			float y = hero.getRectangle().y;
+			hero.getRectangle().y -= Game.cellSize;
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().y = y;
+				}
+			}
+		}
 
-		batch.end();
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+			float x = hero.getRectangle().x;
+			float y = hero.getRectangle().y;
+			hero.getRectangle().x -= Game.cellSize;
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().x = x;
+				}
+			}
+		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			float x = hero.getRectangle().x;
+			hero.getRectangle().x += Game.cellSize;
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().x = x;
+				}
+			}
+		}
+
+		// AbstractMapObject object = map.getObjects().get(3);
+
+
 
 
 	}
