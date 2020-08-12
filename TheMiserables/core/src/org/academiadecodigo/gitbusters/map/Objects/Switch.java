@@ -1,4 +1,13 @@
 package org.academiadecodigo.gitbusters.map.Objects;
 
-public class Switch {
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
+
+public class Switch extends AbstractMapObject {
+
+    public Switch(){
+        setImage(new Texture(Gdx.files.internal("")));
+        setRectangle(new Rectangle());
+    }
 }

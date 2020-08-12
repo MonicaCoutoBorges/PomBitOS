@@ -16,5 +16,11 @@ public class AbstractMapObject {
         this.rectangle = rectangle;
     }
 
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
 
+    public Texture getImage() {
+        return image;
+    }
 }
