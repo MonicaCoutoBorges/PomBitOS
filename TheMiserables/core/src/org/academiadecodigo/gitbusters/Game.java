@@ -17,6 +17,8 @@ public class Game extends ApplicationAdapter {
 
 	private OrthographicCamera camera;
 
+	public final static int cellSize = 28;
+
 
 	@Override
 	public void create () {
@@ -24,7 +26,7 @@ public class Game extends ApplicationAdapter {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 336, 308);
 
-		hero.createHero();
+
 
 	}
 
