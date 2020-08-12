@@ -11,7 +11,7 @@ public class Hero extends AbstractCharacter{
     private SpriteBatch batch;
 
     public Hero(){
-        setTexture(new Texture(Gdx.files.internal("RevolutionaryFoward.png")));
+        setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryFront.png")));
         setRectangle(new Rectangle());
         batch = Game.batch;
     }
