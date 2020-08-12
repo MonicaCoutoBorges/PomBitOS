@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Switch extends AbstractMapObject {
+public class Floor extends AbstractMapObject {
 
-    public Switch(){
+    public Floor(){
         setImage(new Texture(Gdx.files.internal("")));
         setRectangle(new Rectangle());
     }
