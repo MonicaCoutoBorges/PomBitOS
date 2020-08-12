@@ -15,8 +15,10 @@ public class Map {
     private char[][] mapArray;
     private Array<AbstractMapObject> objects;
     private Array<Switch> switches;
+    private Array<CellDoor> cellDoors;
     private AbstractMapObject[][] map;
     private SpriteBatch batch;
+    private int switchCounter = 0;
 
 
     public Map(){
@@ -79,17 +81,27 @@ public class Map {
                         objects.add(wall);
                         break;
                     case 'Y':
-                        CellDoor cellDoor = new CellDoor();
+                        CellDoor cellDoor = null;
+                        if (switchCounter == 0) {
+                            cellDoor = new CellDoor(CellDoor.DoorType.BLUE);
+                        } else {
+                            cellDoor = new CellDoor(CellDoor.DoorType.PINK);
+                        }
                         map[i][j] = cellDoor;
                         cellDoor.getRectangle().x = j * 28;
                         cellDoor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         cellDoor.getRectangle().width = Game.cellSize;
                         cellDoor.getRectangle().height = Game.cellSize;
                         batch.draw(cellDoor.getImage(),cellDoor.getRectangle().x,cellDoor.getRectangle().y);
-                        objects.add(cellDoor);
+                        cellDoors.add(cellDoor);
                         break;
                     case 'K':
-                        Switch aSwitch = new Switch();
+                        Switch aSwitch = null;
+                        if (switchCounter == 0) {
+                            aSwitch = new Switch(Switch.SwitchType.BLUE);
+                        } else {
+                            aSwitch = new Switch(Switch.SwitchType.PINK);
+                        }
                         map[i][j] = aSwitch;
                         aSwitch.getRectangle().x = j * 28;
                         aSwitch.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
