@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class CellDoor extends AbstractMapObject {
 
     public CellDoor(){
-        setImage(new Texture(Gdx.files.internal("")));
+        setImage(new Texture(Gdx.files.internal("Doors/DoorBlue.png")));
         setRectangle(new Rectangle());
     }
 }

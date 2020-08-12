@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Wall extends AbstractMapObject{
 
     public Wall(){
-        setImage(new Texture(Gdx.files.internal("")));
+        setImage(new Texture(Gdx.files.internal("Wall/Wall.png")));
         setRectangle(new Rectangle());
     }
 }

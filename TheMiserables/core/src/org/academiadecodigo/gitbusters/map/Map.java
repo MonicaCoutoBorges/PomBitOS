@@ -42,32 +42,33 @@ public class Map {
                         FinalGate finalGate = new FinalGate();
                         objects.add(finalGate);
                         map[i][j] = finalGate;
-                        finalGate.getRectangle().x = (j + 1) * 28;
-                        finalGate.getRectangle().y = (i + 1) * 28;
+                        finalGate.getRectangle().x = j * 28;
+                        finalGate.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         batch.draw(finalGate.getImage(),finalGate.getRectangle().x,finalGate.getRectangle().y);
-                        break;
+                        break;*/
                     case 'X':
                         Wall wall = new Wall();
                         objects.add(wall);
                         map[i][j] = wall;
-                        wall.getRectangle().x = (j + 1) * 28;
-                        wall.getRectangle().y = (i + 1) * 28;
+                        wall.getRectangle().x = j * 28;
+                        wall.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         batch.draw(wall.getImage(),wall.getRectangle().x,wall.getRectangle().y);
                         break;
                     case 'Y':
                         CellDoor cellDoor = new CellDoor();
                         objects.add(cellDoor);
                         map[i][j] = cellDoor;
-                        cellDoor.getRectangle().x = (j + 1) * 28;
-                        cellDoor.getRectangle().y = (i + 1) * 28;
+                        cellDoor.getRectangle().x = j * 28;
+                        cellDoor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         batch.draw(cellDoor.getImage(),cellDoor.getRectangle().x,cellDoor.getRectangle().y);
                         break;
+                        /**
                     case 'K':
                         Switch aSwitch = new Switch();
                         objects.add(aSwitch);
                         map[i][j] = aSwitch;
-                        aSwitch.getRectangle().x = (j + 1) * 28;
-                        aSwitch.getRectangle().y = (i + 1) * 28;
+                        aSwitch.getRectangle().x = j * 28;
+                        aSwitch.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         batch.draw(aSwitch.getImage(),aSwitch.getRectangle().x,aSwitch.getRectangle().y);
                         break;*/
                 }
