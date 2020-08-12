@@ -8,7 +8,9 @@ import org.academiadecodigo.gitbusters.Game;
 
 public class Hero extends AbstractCharacter{
 
+
     private SpriteBatch batch;
+
 
     public Hero(){
         setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryFront.png")));
@@ -17,10 +19,13 @@ public class Hero extends AbstractCharacter{
     }
 
     public void drawHero() {
-        getRectangle().x = 3 * 28;
-        getRectangle().y = 9 * 28;
+
+        getRectangle().x = 3 * Game.cellSize;
+        getRectangle().y = 9 * Game.cellSize;
+
         getRectangle().width = 28;
         getRectangle().height = 28;
+
         batch.draw(getTexture(), getRectangle().x, getRectangle().y);
     }
 

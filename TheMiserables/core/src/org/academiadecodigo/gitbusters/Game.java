@@ -31,9 +31,12 @@ public class Game extends ApplicationAdapter {
 
 		batch = new SpriteBatch();
 
+
 		this.map = new Map();
 
+
 		this.hero = new Hero();
+
 
 	}
 
