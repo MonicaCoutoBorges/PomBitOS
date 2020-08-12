@@ -6,31 +6,16 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Hero extends AbstractCharacter{
 
-    private Texture hero;
-    private Rectangle heroDraw;
 
-
-    public Rectangle getHeroDraw() {
-        return heroDraw;
-    }
-
-    public Texture getHero() {
-        return hero;
-    }
-
-    public void createHero() {
-        hero = new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/RevolutionaryFoward.png"));
-
-        heroDraw = new Rectangle();
-        heroDraw.x = 200;
-        heroDraw.y = 20;
-        heroDraw.width = 28;
-        heroDraw.height = 28;
-
+    public Hero(){
+        setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/RevolutionaryFoward.png")));
+        setRectangle(new Rectangle());
     }
 
     public void drawHero() {
-        batch.draw(hero, heroDraw.x, heroDraw.y);
+        getRectangle().x = 3 * 28;
+        getRectangle().y = 9 * 28;
+        batch.draw(getTexture(), getRectangle().x, getRectangle().y);
     }
 
 
