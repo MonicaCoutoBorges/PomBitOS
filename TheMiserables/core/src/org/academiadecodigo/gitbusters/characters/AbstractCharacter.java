@@ -16,12 +16,12 @@ public abstract class AbstractCharacter implements Character{
 
     @Override
     public Rectangle getCharacterDraw() {
-        return null;
+        return rectangle;
     }
 
     @Override
     public Texture getCharacter() {
-        return null;
+        return texture;
     }
 
     public Rectangle getRectangle() {

@@ -12,9 +12,9 @@ import org.academiadecodigo.gitbusters.map.Map;
 
 public class Game extends ApplicationAdapter {
 
-	private Hero hero = new Hero();
+	private Hero hero;
 
-	public final static SpriteBatch batch = new SpriteBatch();
+	public static SpriteBatch batch;
 
 	private Map map;
 
@@ -27,11 +27,13 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 336, 308);
+		camera.setToOrtho(true, 336, 308);
 
-
+		batch = new SpriteBatch();
 
 		this.map = new Map();
+
+		this.hero = new Hero();
 
 	}
 
@@ -42,8 +44,8 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		hero.drawHero();
 		map.drawMap();
+		hero.drawHero();
 		batch.end();
 	}
 	
