@@ -9,7 +9,7 @@ public class Guard extends AbstractCharacter {
 
     public Guard(){
 
-        setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Guard/GuardFront.png")));
+        setTexture(new Texture(Gdx.files.internal("Guard\\GuardFront.png")));
 
         setRectangle(new Rectangle());
         batch = Game.batch;

@@ -8,7 +8,7 @@ import org.academiadecodigo.gitbusters.Game;
 public class Slave extends AbstractCharacter {
 
     public Slave(){
-        setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Prisioner/PrisionerFront.png")));
+        setTexture(new Texture(Gdx.files.internal("Prisioner\\PrisionerFront.png")));
 
         setRectangle(new Rectangle());
         batch = Game.batch;
