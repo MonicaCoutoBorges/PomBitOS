@@ -8,12 +8,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.characters.Hero;
+import org.academiadecodigo.gitbusters.map.Map;
 
 public class Game extends ApplicationAdapter {
 
 	private Hero hero = new Hero();
-	
+
 	public final static SpriteBatch batch = new SpriteBatch();
+
+	private Map map;
 
 	private OrthographicCamera camera;
 
@@ -26,6 +29,8 @@ public class Game extends ApplicationAdapter {
 
 		hero.createHero();
 
+		this.map = new Map();
+
 	}
 
 	@Override
@@ -36,6 +41,7 @@ public class Game extends ApplicationAdapter {
 
 		batch.begin();
 		hero.drawHero();
+		map.drawMap();
 		batch.end();
 	}
 	
