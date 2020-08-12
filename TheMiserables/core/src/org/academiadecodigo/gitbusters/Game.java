@@ -32,8 +32,8 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void create () {
 
-		camera = new OrthographicCamera();
-		camera.setToOrtho(true, 336, 308);
+		camera= new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
 		batch = new SpriteBatch();
 
@@ -100,7 +100,6 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 
-		image.dispose();
 		batch.dispose();
 
 	}

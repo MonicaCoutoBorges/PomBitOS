@@ -28,14 +28,14 @@ public class Map {
 
 
         for(int i = mapArray.length-1; i >= 0; i--){
-            for(int j = mapArray[i].length-1; j >= 0 ; j--){
+            for(int j = 0; j < mapArray[i].length ; j++){
                 switch (mapArray[i][j]){
                     case '_':
                         Floor floor = new Floor();
                         objects.add(floor);
                         map[i][j] = floor;
                         floor.getRectangle().x = j * Game.cellSize;
-                        floor.getRectangle().y = i * Game.cellSize;
+                        floor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         batch.draw(floor.getImage(),floor.getRectangle().x,floor.getRectangle().y);
                         break;
                     /**case 'T':

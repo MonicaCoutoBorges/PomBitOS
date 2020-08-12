@@ -13,7 +13,9 @@ public class Hero extends AbstractCharacter{
 
 
     public Hero(){
+
         setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryFront.png")));
+
         setRectangle(new Rectangle());
         batch = Game.batch;
         getRectangle().x = Game.cellSize;
