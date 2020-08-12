@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.Objects.AbstractMapObject;
+import org.academiadecodigo.gitbusters.map.Objects.Switch;
 
 import java.util.Iterator;
 
@@ -30,6 +31,8 @@ public class Game extends ApplicationAdapter {
 	private float y = cellSize;
 
 	private Texture image;
+
+	private int counter = 0;
 
 
 	@Override
@@ -60,6 +63,7 @@ public class Game extends ApplicationAdapter {
 		batch.begin();
 		map.drawMap();
 		hero.drawHero();
+		batch.end();
 
 
 //		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
@@ -79,30 +83,57 @@ public class Game extends ApplicationAdapter {
 //		}
 
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryBack.png")));
+			float y = hero.getRectangle().y;
 			hero.getRectangle().y += Game.cellSize;
-		}
-
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-			hero.getRectangle().y -= Game.cellSize;
-		}
-
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			hero.getRectangle().x -= Game.cellSize;
-		}
-
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			hero.getRectangle().x += Game.cellSize;
-		}
-
-		for (Iterator<Rectangle> iter = map.getObjectRectangles().iterator(); iter.hasNext();){
-			Rectangle mapObject = iter.next();
-			if (hero.getRectangle().overlaps(mapObject)){
-				System.exit(1);
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().y = y;
+				}
 			}
 		}
 
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
 
-		batch.end();
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryFront.png")));
+			float y = hero.getRectangle().y;
+			hero.getRectangle().y -= Game.cellSize;
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().y = y;
+				}
+			}
+		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryLeft.png")));
+			float x = hero.getRectangle().x;
+			float y = hero.getRectangle().y;
+			hero.getRectangle().x -= Game.cellSize;
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().x = x;
+				}
+			}
+		}
+
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+
+			hero.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryRight.png")));
+			float x = hero.getRectangle().x;
+			hero.getRectangle().x += Game.cellSize;
+			for (AbstractMapObject object: map.getObjects()){
+				if (hero.getRectangle().overlaps(object.getRectangle())){
+					hero.getRectangle().x = x;
+				}
+			}
+		}
+
+		// AbstractMapObject object = map.getObjects().get(3);
+
+
 
 
 	}
