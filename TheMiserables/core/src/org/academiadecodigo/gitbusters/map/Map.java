@@ -17,7 +17,7 @@ public class Map {
     private SpriteBatch batch;
 
 
-    public Map(MapArray mapArray){
+    public Map(){
          this.mapArray = MapArray.map0;
          this.batch = Game.batch;
          objects = new ArrayList<>();
