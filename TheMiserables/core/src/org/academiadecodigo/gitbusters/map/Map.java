@@ -2,6 +2,8 @@ package org.academiadecodigo.gitbusters.map;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.gitbusters.Game;
 import org.academiadecodigo.gitbusters.map.Objects.*;
 
@@ -11,7 +13,8 @@ import java.util.List;
 public class Map {
 
     private char[][] mapArray;
-    private List<AbstractMapObject> objects;
+    private Array<AbstractMapObject> objects;
+    private Array<Switch> switches;
     private AbstractMapObject[][] map;
     private SpriteBatch batch;
 
@@ -19,7 +22,25 @@ public class Map {
     public Map(){
          this.mapArray = MapArray.map0;
          this.batch = Game.batch;
-         objects = new ArrayList<>();
+         objects = new Array<AbstractMapObject>();
+         switches = new Array<Switch>();
+    }
+
+    public Array<Switch> getSwitches() {
+        return switches;
+    }
+
+    public Array<AbstractMapObject> getObjects() {
+        return objects;
+    }
+
+    public Array<Rectangle> getObjectRectangles(){
+        Array<Rectangle> rectangles = new Array<>();
+        for (AbstractMapObject object : objects){
+            rectangles.add(object.getRectangle());
+        }
+
+        return rectangles;
     }
 
     public void drawMap(){
@@ -32,10 +53,11 @@ public class Map {
                 switch (mapArray[i][j]){
                     case '_':
                         Floor floor = new Floor();
-                        objects.add(floor);
                         map[i][j] = floor;
                         floor.getRectangle().x = j * Game.cellSize;
                         floor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        floor.getRectangle().width = Game.cellSize;
+                        floor.getRectangle().height = Game.cellSize;
                         batch.draw(floor.getImage(),floor.getRectangle().x,floor.getRectangle().y);
                         break;
                     /**case 'T':
@@ -48,29 +70,34 @@ public class Map {
                         break;*/
                     case 'X':
                         Wall wall = new Wall();
-                        objects.add(wall);
                         map[i][j] = wall;
                         wall.getRectangle().x = j * 28;
                         wall.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        wall.getRectangle().width = Game.cellSize;
+                        wall.getRectangle().height = Game.cellSize;
                         batch.draw(wall.getImage(),wall.getRectangle().x,wall.getRectangle().y);
+                        objects.add(wall);
                         break;
                     case 'Y':
                         CellDoor cellDoor = new CellDoor();
-                        objects.add(cellDoor);
                         map[i][j] = cellDoor;
                         cellDoor.getRectangle().x = j * 28;
                         cellDoor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        cellDoor.getRectangle().width = Game.cellSize;
+                        cellDoor.getRectangle().height = Game.cellSize;
                         batch.draw(cellDoor.getImage(),cellDoor.getRectangle().x,cellDoor.getRectangle().y);
+                        objects.add(cellDoor);
                         break;
-                        /**
                     case 'K':
                         Switch aSwitch = new Switch();
-                        objects.add(aSwitch);
                         map[i][j] = aSwitch;
                         aSwitch.getRectangle().x = j * 28;
                         aSwitch.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        aSwitch.getRectangle().width = Game.cellSize;
+                        aSwitch.getRectangle().height = Game.cellSize;
+                        switches.add(aSwitch);
                         batch.draw(aSwitch.getImage(),aSwitch.getRectangle().x,aSwitch.getRectangle().y);
-                        break;*/
+                        break;
                 }
             }
         }
