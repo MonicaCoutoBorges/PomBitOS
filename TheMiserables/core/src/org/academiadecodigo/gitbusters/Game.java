@@ -23,7 +23,7 @@ public class Game extends ApplicationAdapter {
 	private Rectangle guardDraw;
 	private Rectangle slaveDraw;
 
-	private final static SpriteBatch batch = new SpriteBatch();
+	public final static SpriteBatch batch = new SpriteBatch();
 
 	private OrthographicCamera camera;
 
