@@ -35,6 +35,13 @@ public class Map {
         return switches;
     }
 
+    public void cleanArrays(){
+        objects = null;
+        cellDoors = null;
+        switches = null;
+        finalGates = null;
+    }
+
     public Array<AbstractMapObject> getObjects() {
         return objects;
     }
