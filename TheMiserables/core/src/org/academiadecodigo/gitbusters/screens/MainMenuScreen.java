@@ -12,14 +12,18 @@ public class MainMenuScreen implements Screen {
 
 
 
+    private static final int MAINMENU_IMG_WIDTH = Game2.WIDTH;
+    private static final int MAINMENU_IMG_HEIGHT = Game2.HEIGHT;
+    private static final int MAINMENU_IMG_Y = 0;
+    private static final int MAINMENU_IMG_X = Game2.WIDTH / 2 - MAINMENU_IMG_WIDTH / 2;
 
     //Buttons Size.. podem ir no 3 5 argumento do draw
-    private static final int EXIT_BUTTON_WIDTH = 250;
-    private static final int EXIT_BUTTON_HEIGHT = 120;
-    private static final int PLAY_BUTTON_WIDTH = 300;
-    private static final int PLAY_BUTTON_HEIGHT = 120;
-    private static final int EXIT_BUTTON_Y = 100;
-    private static final int PLAY_BUTTON_Y = 230;
+    private static final int EXIT_BUTTON_WIDTH = 90;
+    private static final int EXIT_BUTTON_HEIGHT = 28;
+    private static final int PLAY_BUTTON_WIDTH = 130;
+    private static final int PLAY_BUTTON_HEIGHT = 28;
+    private static final int EXIT_BUTTON_Y = 68;
+    private static final int PLAY_BUTTON_Y = 118;
 
     final Game2 game;
 
@@ -28,10 +32,15 @@ public class MainMenuScreen implements Screen {
     Texture exitButtonActive;
     Texture exitButtonInactive;
 
+    Texture mainMenuImg;
+
 
 
     public MainMenuScreen (final Game2 game){
         this.game = game;
+
+        mainMenuImg = new Texture("Menu/Screen Shot 2020-08-13 at 19.58.47.png");
+
         playButtonActive = new Texture("Buttons/PlayActive.png");
         playButtonInactive = new Texture("Buttons/PlayInactive.png");
         exitButtonActive = new Texture("Buttons/ExitActive.png");
@@ -55,18 +64,20 @@ public class MainMenuScreen implements Screen {
 
         game.batch.begin();
 
+        game.batch.draw(mainMenuImg, MAINMENU_IMG_X, MAINMENU_IMG_Y, MAINMENU_IMG_WIDTH, MAINMENU_IMG_HEIGHT);
+
 
         int xExitButton = Game2.WIDTH / 2 - EXIT_BUTTON_WIDTH / 2;
 
         if(Gdx.input.getX() < xExitButton + EXIT_BUTTON_WIDTH && Gdx.input.getX() > xExitButton && Game2.HEIGHT - Gdx.input.getY() < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > EXIT_BUTTON_Y) {
-            game.batch.draw(exitButtonActive, xExitButton , EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+            //game.batch.draw(exitButtonActive, xExitButton , EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 
             if(Gdx.input.isTouched()){
                 Gdx.app.exit();
             }
 
         } else {
-            game.batch.draw(exitButtonInactive, xExitButton, EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+            //game.batch.draw(exitButtonInactive, xExitButton, EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
         }
 
 
@@ -74,7 +85,7 @@ public class MainMenuScreen implements Screen {
         int xPlayButton = Game2.WIDTH / 2 - PLAY_BUTTON_WIDTH / 2;
 
         if(Gdx.input.getX() < xPlayButton + PLAY_BUTTON_WIDTH && Gdx.input.getX() > xPlayButton && Game2.HEIGHT - Gdx.input.getY() < PLAY_BUTTON_Y + PLAY_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > PLAY_BUTTON_Y) {
-            game.batch.draw(playButtonActive, xPlayButton , PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+            //game.batch.draw(playButtonActive, xPlayButton , PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 
             if(Gdx.input.isTouched()) {
 
@@ -85,7 +96,7 @@ public class MainMenuScreen implements Screen {
             }
 
         } else {
-            game.batch.draw(playButtonInactive, xPlayButton, PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
+            //game.batch.draw(playButtonInactive, xPlayButton, PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
         }
 
 

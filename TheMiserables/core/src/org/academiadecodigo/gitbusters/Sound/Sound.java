@@ -9,7 +9,7 @@ public class Sound {
 
     private static Music switchMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/switchMusic.mp3"));
     private static Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/backgroundMusic.mp3"));
-    private static Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/MenuMusic.mp3"));
+    private static Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/MenuMusic.mp3"));
     private static com.badlogic.gdx.audio.Sound switchSound = Gdx.audio.newSound(Gdx.files.internal("MusicAndSounds/ButtonPress.mp3"));
 
     public Sound(){
