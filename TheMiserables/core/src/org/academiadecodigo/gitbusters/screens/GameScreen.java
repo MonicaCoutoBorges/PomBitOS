@@ -228,15 +228,15 @@ public class GameScreen implements Screen {
                         map.getMapArray()[6][11] = '_';
                         switchOn = true;
                         levelCompleted = true;
-                        /// a imagem de WINNING ESTÁ A APARECER AQUI
-                        game.setScreen(new WinnerScrenn(game));
+
                     }
                 }
             }
         }
 
         if (hero.getRectangle().x > (map.getMapArray()[0].length -1) * GameScreen.cellSize){
-
+/// a imagem de WINNING ESTÁ A APARECER AQUI
+            game.setScreen(new WinnerScrenn(game));
         }
 
         if (levelCompleted){

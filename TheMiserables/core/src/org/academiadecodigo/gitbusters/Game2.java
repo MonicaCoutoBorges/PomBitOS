@@ -21,7 +21,7 @@ import org.academiadecodigo.gitbusters.screens.WinnerScrenn;
 public class Game2 extends Game {
 
     public static final int WIDTH = 336;
-    public static final int HEIGHT = 308;
+    public static final int HEIGHT = 330;
 
 
     public static SpriteBatch batch;
