@@ -25,7 +25,7 @@ public class Hero extends AbstractCharacter{
         getRectangle().height = Game.cellSize;
     }
 
-    public void drawHero() {
+    public void drawCharacter() {
 
         batch.draw(getTexture(), getRectangle().x, getRectangle().y);
     }

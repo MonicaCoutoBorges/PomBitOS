@@ -12,6 +12,6 @@ Rectangle getCharacterDraw();
 
 Texture getCharacter();
 
-void drawHero();
+void drawCharacter();
 
 }

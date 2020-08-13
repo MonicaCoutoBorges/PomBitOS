@@ -14,6 +14,10 @@ public class Switch extends AbstractMapObject {
 
     private SwitchType color;
 
+    public SwitchType getColor() {
+        return color;
+    }
+
     public Switch(SwitchType switchType){
         if (switchType == SwitchType.BLUE) {
             setImage(new Texture(Gdx.files.internal("Switch/FloorSwitchBlue.png")));

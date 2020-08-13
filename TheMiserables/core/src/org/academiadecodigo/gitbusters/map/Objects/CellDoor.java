@@ -14,6 +14,10 @@ public class CellDoor extends AbstractMapObject {
 
     private DoorType color;
 
+    public DoorType getColor() {
+        return color;
+    }
+
     public CellDoor(DoorType doorType){
         if (doorType == DoorType.BLUE) {
             setImage(new Texture(Gdx.files.internal("Doors/DoorBlue.png")));

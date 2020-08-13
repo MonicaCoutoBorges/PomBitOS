@@ -21,7 +21,7 @@ public class Guard extends AbstractCharacter {
     }
 
     @Override
-    public void drawHero() {
+    public void drawCharacter() {
         batch.draw(getTexture(), getRectangle().x, getRectangle().y);
 
     }
