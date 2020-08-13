@@ -9,9 +9,9 @@ import org.academiadecodigo.gitbusters.Game2;
 public class WinnerScrenn implements Screen {
 
 
-    private static final int WINNING_IMG_WIDTH = 300;
-    private static final int WINNING_IMG_HEIGHT = 120;
-    private static final int WINNING_IMG_Y = 230;
+    private static final int WINNING_IMG_WIDTH = Game2.WIDTH;
+    private static final int WINNING_IMG_HEIGHT = Game2.HEIGHT;
+    private static final int WINNING_IMG_Y = 0;
     private static final int WINNING_IMG_X = Game2.WIDTH / 2 - WINNING_IMG_WIDTH / 2;
 
     Game2 game;
@@ -25,7 +25,7 @@ public class WinnerScrenn implements Screen {
 
         this.game = game;
 
-        winning = new Texture("Floor/Floor.png");
+        winning = new Texture("Victory/Victory.png");
 
 
     }

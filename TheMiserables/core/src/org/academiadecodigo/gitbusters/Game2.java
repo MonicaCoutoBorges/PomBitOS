@@ -15,6 +15,7 @@ import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.characters.Slave;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.Objects.*;
+import org.academiadecodigo.gitbusters.screens.GameOverScreen;
 import org.academiadecodigo.gitbusters.screens.MainMenuScreen;
 import org.academiadecodigo.gitbusters.screens.WinnerScrenn;
 
@@ -33,7 +34,7 @@ public class Game2 extends Game {
     public void create() {
 
         batch = new SpriteBatch();
-        this.setScreen(new MainMenuScreen(this));
+        this.setScreen(new GameOverScreen(this));
 
     }
 
