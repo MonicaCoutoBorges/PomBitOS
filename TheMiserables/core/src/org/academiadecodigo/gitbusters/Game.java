@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import org.academiadecodigo.gitbusters.characters.Guard;
 import org.academiadecodigo.gitbusters.characters.Hero;
+import org.academiadecodigo.gitbusters.characters.Slave;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.MapArray;
 import org.academiadecodigo.gitbusters.map.Objects.*;
@@ -16,6 +18,8 @@ import org.academiadecodigo.gitbusters.map.Objects.*;
 public class Game extends ApplicationAdapter {
 
     private Hero hero;
+    private Slave slave;
+    private Guard guard;
 
     public static SpriteBatch batch;
 
@@ -34,6 +38,10 @@ public class Game extends ApplicationAdapter {
 
     private boolean switchOn = false;
 
+    private boolean movingDown = true;
+
+    private GameStatus gameStatus = GameStatus.MAINMENU;
+
 
     @Override
     public void create() {
@@ -49,7 +57,9 @@ public class Game extends ApplicationAdapter {
 
         this.hero = new Hero();
 
-        image = hero.getTexture();
+        this.slave = new Slave();
+
+        this.guard = new Guard();
 
 
     }
@@ -63,6 +73,8 @@ public class Game extends ApplicationAdapter {
         batch.begin();
         map.drawMap();
         hero.drawCharacter();
+        guard.drawCharacter();
+        slave.drawCharacter();
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
@@ -87,6 +99,34 @@ public class Game extends ApplicationAdapter {
                     hero.getRectangle().y = y;
                 }
             }
+        }
+
+        if (guard.getRectangle().y != Game.cellSize && movingDown){
+            guard.getRectangle().y -= 2;
+            if(hero.getRectangle().x == guard.getRectangle().x && hero.getRectangle().y < guard.getRectangle().y) {
+                System.exit(420);
+            }
+        }
+
+        if (guard.getRectangle().y == cellSize){
+            guard.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Guard/GuardBack.png")));
+            movingDown = false;
+        }
+
+        if (guard.getRectangle().y != 5 * cellSize && !movingDown){
+            guard.getRectangle().y += 2;
+            if(hero.getRectangle().x == guard.getRectangle().x && hero.getRectangle().y > guard.getRectangle().y) {
+                System.exit(420);
+            }
+        }
+
+        if (guard.getRectangle().y == 5 * cellSize){
+            guard.setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Guard/GuardFront.png")));
+            movingDown = true;
+        }
+
+        if (hero.getRectangle().overlaps(guard.getRectangle())){
+            System.exit(1);
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -116,40 +156,34 @@ public class Game extends ApplicationAdapter {
 
         for (Switch aSwitch : map.getSwitches()) {
             if (hero.getRectangle().overlaps(aSwitch.getRectangle()) && aSwitch.getColor() == Switch.SwitchType.BLUE && !switchOn) {
-                System.out.println("entrou");
                 for (CellDoor cellDoor : map.getCellDoors()) {
                     if (cellDoor.getColor() == CellDoor.DoorType.BLUE) {
                         map.getObjects().removeValue(cellDoor,true);
                         map.getCellDoors().removeValue(cellDoor,true);
                         // MapArray.map0[(int) x / cellSize][(int) y / cellSize] = '_';
                         map.getMapArray()[4][5] = '_';
+                        map.getMapArray()[4][11] = '_';
+                        map.getMapArray()[5][11] = '_';
+                        map.getMapArray()[6][11] = '_';
                         switchOn = true;
-
-
-/**
- Floor floor = new Floor();
- floor.setImage(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Floor/Floor.png")));
- floor.setRectangle(new Rectangle());
- floor.getRectangle().x = x;
- floor.getRectangle().y = y;
- floor.getRectangle().width = Game.cellSize;
- floor.getRectangle().height = Game.cellSize;
- Game.batch.draw(floor.getImage(), x, y);
- */
                     }
                 }
             }
         }
 
+        /**
         if (map.getCellDoors().isEmpty()){
+            System.out.println("entrou");
             for (AbstractMapObject object: map.getObjects()){
                 if (object instanceof FinalGate){
+                    System.out.println("entrou");
                     map.getMapArray()[4][11] = '_';
                     map.getMapArray()[5][11] = '_';
                     map.getMapArray()[6][11] = '_';
                 }
             }
         }
+         */
 
 
         batch.end();

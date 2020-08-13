@@ -14,7 +14,7 @@ public class Guard extends AbstractCharacter {
         setRectangle(new Rectangle());
         batch = Game.batch;
         getRectangle().x = Game.cellSize * 5;
-        getRectangle().y = Game.cellSize * 4;
+        getRectangle().y = Game.cellSize * 5;
 
         getRectangle().width = Game.cellSize;
         getRectangle().height = Game.cellSize;

@@ -74,14 +74,16 @@ public class Map {
                         floor.getRectangle().height = Game.cellSize;
                         batch.draw(floor.getImage(),floor.getRectangle().x,floor.getRectangle().y);
                         break;
-                    /**case 'T':
+                    case 'T':
                         FinalGate finalGate = new FinalGate();
                         objects.add(finalGate);
                         map[i][j] = finalGate;
                         finalGate.getRectangle().x = j * 28;
                         finalGate.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        finalGate.getRectangle().width = Game.cellSize;
+                        finalGate.getRectangle().height = Game.cellSize;
                         batch.draw(finalGate.getImage(),finalGate.getRectangle().x,finalGate.getRectangle().y);
-                        break;*/
+                        break;
                     case 'X':
                         Wall wall = new Wall();
                         map[i][j] = wall;

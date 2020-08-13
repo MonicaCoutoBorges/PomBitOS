@@ -13,7 +13,7 @@ public class Slave extends AbstractCharacter {
         setRectangle(new Rectangle());
         batch = Game.batch;
         getRectangle().x = Game.cellSize * 5;
-        getRectangle().y = Game.cellSize * 6;
+        getRectangle().y = Game.cellSize * 7;
 
         getRectangle().width = Game.cellSize;
         getRectangle().height = Game.cellSize;
