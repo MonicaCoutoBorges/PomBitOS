@@ -119,6 +119,11 @@ public class GameScreen implements Screen {
             }
         }
 
+        if(hero.getRectangle().x > 250 && hero.getRectangle().y > 250){
+            game.setScreen(new GameOverScreen(game));
+
+        }
+
         for (Switch aSwitch : map.getSwitches()) {
             if (hero.getRectangle().overlaps(aSwitch.getRectangle()) && aSwitch.getColor() == Switch.SwitchType.BLUE && !switchOn) {
                 System.out.println("entrou");
