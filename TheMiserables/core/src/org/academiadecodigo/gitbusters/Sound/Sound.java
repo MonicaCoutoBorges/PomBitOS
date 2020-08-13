@@ -14,6 +14,8 @@ public class Sound {
     public Sound(){
         switchMusic = Gdx.audio.newMusic(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/switchMusic.mp3"));
         backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/backgroundMusic.mp3"));
+        switchSound = Gdx.audio.newSound(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/ButtonPress.mp3"));
+
 
     }
 
@@ -28,6 +30,10 @@ public class Sound {
 
     public void backGroundStop(){
         backgroundMusic.stop();
+    }
+
+    public void switchSoundPlay(){
+        switchSound.play();
     }
 
 }

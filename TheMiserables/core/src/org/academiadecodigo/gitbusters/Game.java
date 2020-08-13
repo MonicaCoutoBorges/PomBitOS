@@ -58,9 +58,7 @@ public class Game extends ApplicationAdapter {
 
         batch = new SpriteBatch();
 
-
         this.map = new Map();
-
 
         this.hero = new Hero();
 
@@ -200,6 +198,7 @@ public class Game extends ApplicationAdapter {
         for (Switch aSwitch : map.getSwitches()) {
             if (hero.getRectangle().overlaps(aSwitch.getRectangle()) && aSwitch.getColor() == Switch.SwitchType.BLUE && !switchOn) {
                 sound.backGroundStop();
+                sound.switchSoundPlay();
                 sound.lesMiserablesPlay();
                 for (CellDoor cellDoor : map.getCellDoors()) {
                     if (cellDoor.getColor() == CellDoor.DoorType.BLUE) {
