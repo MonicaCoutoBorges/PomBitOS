@@ -268,7 +268,7 @@ public class GameScreen implements Screen {
         if (hero.getRectangle().x > (map.getMapArray()[0].length -1) * GameScreen.cellSize){
             /// a imagem de WINNING ESTÁ A APARECER AQUI
             sound.switchMusicStop();
-            sound.switchMusicStop();
+            sound.backGroundStop();
             resetMap();
             map.cleanArrays();
             game.setScreen(new WinnerScrenn(game));
