@@ -3,20 +3,21 @@ package org.academiadecodigo.gitbusters.characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import org.academiadecodigo.gitbusters.Game;
+import org.academiadecodigo.gitbusters.Game2;
+import org.academiadecodigo.gitbusters.screens.GameScreen;
 
 public class Slave extends AbstractCharacter {
 
     public Slave(){
-        setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Prisioner/PrisionerFront.png")));
+        setTexture(new Texture(Gdx.files.internal("Prisioner/PrisionerFront.png")));
 
         setRectangle(new Rectangle());
-        batch = Game.batch;
-        getRectangle().x = Game.cellSize * 5;
-        getRectangle().y = Game.cellSize * 7;
+        batch = Game2.batch;
+        getRectangle().x = GameScreen.cellSize * 5;
+        getRectangle().y = GameScreen.cellSize * 7;
 
-        getRectangle().width = Game.cellSize;
-        getRectangle().height = Game.cellSize;
+        getRectangle().width = GameScreen.cellSize;
+        getRectangle().height = GameScreen.cellSize;
     }
 
     @Override

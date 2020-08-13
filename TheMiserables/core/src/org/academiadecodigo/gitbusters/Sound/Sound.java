@@ -12,9 +12,9 @@ public class Sound {
     private com.badlogic.gdx.audio.Sound switchSound;
 
     public Sound(){
-        switchMusic = Gdx.audio.newMusic(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/switchMusic.mp3"));
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/backgroundMusic.mp3"));
-        switchSound = Gdx.audio.newSound(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/ButtonPress.mp3"));
+        switchMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/switchMusic.mp3"));
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/backgroundMusic.mp3"));
+        switchSound = Gdx.audio.newSound(Gdx.files.internal("MusicAndSounds/ButtonPress.mp3"));
 
 
     }
