@@ -78,6 +78,8 @@ public class Game extends ApplicationAdapter {
     @Override
     public void render() {
 
+
+
         Gdx.gl.glClearColor(0, 0, 255, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -214,6 +216,10 @@ public class Game extends ApplicationAdapter {
                     }
                 }
             }
+        }
+
+        if (hero.getRectangle().x > (map.getMapArray()[0].length -1) * Game.cellSize){
+            
         }
 
         if (levelCompleted){
