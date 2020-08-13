@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.Game2;
-import org.academiadecodigo.gitbusters.Game1;
 import org.academiadecodigo.gitbusters.GameStatus;
 import org.academiadecodigo.gitbusters.Sound.Sound;
 import org.academiadecodigo.gitbusters.characters.Guard;
@@ -19,8 +18,6 @@ import org.academiadecodigo.gitbusters.map.Objects.AbstractMapObject;
 import org.academiadecodigo.gitbusters.map.Objects.CellDoor;
 import org.academiadecodigo.gitbusters.map.Objects.FinalGate;
 import org.academiadecodigo.gitbusters.map.Objects.Switch;
-
-import java.util.Iterator;
 
 public class GameScreen implements Screen {
 

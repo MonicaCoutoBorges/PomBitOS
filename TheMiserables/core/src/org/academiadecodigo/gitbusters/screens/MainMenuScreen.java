@@ -5,7 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import org.academiadecodigo.gitbusters.Game2;
-import org.academiadecodigo.gitbusters.Game1;
 
 public class MainMenuScreen implements Screen {
 
