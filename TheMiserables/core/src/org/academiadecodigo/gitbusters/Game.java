@@ -11,10 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.MapArray;
-import org.academiadecodigo.gitbusters.map.Objects.AbstractMapObject;
-import org.academiadecodigo.gitbusters.map.Objects.CellDoor;
-import org.academiadecodigo.gitbusters.map.Objects.Floor;
-import org.academiadecodigo.gitbusters.map.Objects.Switch;
+import org.academiadecodigo.gitbusters.map.Objects.*;
 
 public class Game extends ApplicationAdapter {
 
@@ -117,13 +114,13 @@ public class Game extends ApplicationAdapter {
             }
         }
 
-
         for (Switch aSwitch : map.getSwitches()) {
             if (hero.getRectangle().overlaps(aSwitch.getRectangle()) && aSwitch.getColor() == Switch.SwitchType.BLUE && !switchOn) {
                 System.out.println("entrou");
                 for (CellDoor cellDoor : map.getCellDoors()) {
                     if (cellDoor.getColor() == CellDoor.DoorType.BLUE) {
                         map.getObjects().removeValue(cellDoor,true);
+                        map.getCellDoors().removeValue(cellDoor,true);
                         // MapArray.map0[(int) x / cellSize][(int) y / cellSize] = '_';
                         map.getMapArray()[4][5] = '_';
                         switchOn = true;
@@ -140,6 +137,16 @@ public class Game extends ApplicationAdapter {
  Game.batch.draw(floor.getImage(), x, y);
  */
                     }
+                }
+            }
+        }
+
+        if (map.getCellDoors().isEmpty()){
+            for (AbstractMapObject object: map.getObjects()){
+                if (object instanceof FinalGate){
+                    map.getMapArray()[4][11] = '_';
+                    map.getMapArray()[5][11] = '_';
+                    map.getMapArray()[6][11] = '_';
                 }
             }
         }

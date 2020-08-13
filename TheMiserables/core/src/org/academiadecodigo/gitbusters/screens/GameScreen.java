@@ -56,7 +56,7 @@ public class GameScreen implements Screen {
 
         game.batch.begin();
         map.drawMap();
-        hero.drawHero();
+        hero.drawCharacter();
 
 
 //		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
