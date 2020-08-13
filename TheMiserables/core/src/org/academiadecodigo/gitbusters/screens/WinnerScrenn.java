@@ -44,6 +44,11 @@ public class WinnerScrenn implements Screen {
         game.batch.begin();
 
         if(Gdx.input.isTouched()){
+            try{
+                Thread.sleep(500);
+            } catch(InterruptedException ex) {
+                ex.getMessage();
+            }
             game.setScreen(new MainMenuScreen(game));
         } else {
             game.batch.draw(winning, WINNING_IMG_X, WINNING_IMG_Y, WINNING_IMG_WIDTH, WINNING_IMG_HEIGHT);

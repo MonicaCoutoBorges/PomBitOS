@@ -286,6 +286,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
+        Gdx.input.setInputProcessor(null);
         game.batch.dispose();
         image.dispose();
     }

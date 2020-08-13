@@ -63,6 +63,8 @@ public class GameOverScreen implements Screen {
                 //this.dispose();
                 //game.batch.end();
                 game.setScreen(new GameScreen(game));
+
+
             }
         } else {
             game.batch.draw(tryAgainButtonInactive, xTryAgain, TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
@@ -76,7 +78,13 @@ public class GameOverScreen implements Screen {
             if(Gdx.input.isTouched()) {
                 //this.dispose();
                 //game.batch.end();
+                try{
+                    Thread.sleep(500);
+                } catch(InterruptedException ex) {
+                    ex.getMessage();
+                }
                 game.setScreen(new MainMenuScreen(game));
+
             }
         } else {
             game.batch.draw(mainMenuButtonInactive, xMainMenu, MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);

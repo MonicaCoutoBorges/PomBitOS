@@ -1,6 +1,7 @@
 package org.academiadecodigo.gitbusters.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,7 +17,7 @@ public class MainMenuScreen implements Screen {
     private static final int EXIT_BUTTON_Y = 100;
     private static final int PLAY_BUTTON_Y = 230;
 
-    Game2 game;
+    final Game2 game;
 
     Texture playButtonActive;
     Texture playButtonInactive;
@@ -24,12 +25,14 @@ public class MainMenuScreen implements Screen {
     Texture exitButtonInactive;
 
 
-    public MainMenuScreen (Game2 game){
+    public MainMenuScreen (final Game2 game){
         this.game = game;
         playButtonActive = new Texture("Buttons/PlayActive.png");
         playButtonInactive = new Texture("Buttons/PlayInactive.png");
         exitButtonActive = new Texture("Buttons/ExitActive.png");
         exitButtonInactive = new Texture("Buttons/ExitInactive.png");
+
+
 
     }
 
@@ -48,7 +51,12 @@ public class MainMenuScreen implements Screen {
 
 
         int xExitButton = Game2.WIDTH / 2 - EXIT_BUTTON_WIDTH / 2;
+        //try{
+        //    Thread.sleep(1800);
+        //} catch(InterruptedException ex) {
 
+        //   ex.getMessage();
+        //}
 
         if(Gdx.input.getX() < xExitButton + EXIT_BUTTON_WIDTH && Gdx.input.getX() > xExitButton && Game2.HEIGHT - Gdx.input.getY() < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > EXIT_BUTTON_Y) {
             game.batch.draw(exitButtonActive, xExitButton , EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
