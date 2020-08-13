@@ -48,7 +48,6 @@ public class GameScreen implements Screen {
 
     private boolean slaveEscaped = false;
 
-    private Sound sound;
 
     private GameStatus gameStatus = GameStatus.MAINMENU;
 
@@ -72,9 +71,7 @@ public class GameScreen implements Screen {
 
         this.guard = new Guard();
 
-        sound = new Sound();
-
-        sound.backgroundPlay();
+        Sound.backgroundPlay();
 
         map.setMapArray(MapArray.map0);
 
@@ -138,9 +135,9 @@ public class GameScreen implements Screen {
 
         for (Switch aSwitch : map.getSwitches()) {
             if (hero.getRectangle().overlaps(aSwitch.getRectangle()) && aSwitch.getColor() == Switch.SwitchType.BLUE && !switchOn) {
-                sound.backGroundStop();
-                sound.switchSoundPlay();
-                sound.lesMiserablesPlay();
+                Sound.backGroundStop();
+                Sound.switchSoundPlay();
+                Sound.lesMiserablesPlay();
                 for (CellDoor cellDoor : map.getCellDoors()) {
                     if (cellDoor.getColor() == CellDoor.DoorType.BLUE) {
                         map.getObjects().removeValue(cellDoor,true);
@@ -186,8 +183,8 @@ public class GameScreen implements Screen {
             guard.getRectangle().y -= 2;
             if(hero.getRectangle().x < guard.getRectangle().x + (float)16 && hero.getRectangle().x > guard.getRectangle().x - (float)16 && hero.getRectangle().y < guard.getRectangle().y) {
                 guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardBack.png")));
-                sound.backGroundStop();
-                sound.switchMusicStop();
+                Sound.backGroundStop();
+                Sound.switchMusicStop();
                 map.cleanArrays();
                 resetMap();
                 game.setScreen(new GameOverScreen(game));
@@ -204,8 +201,8 @@ public class GameScreen implements Screen {
             guard.getRectangle().y += 2;
             if(hero.getRectangle().x < guard.getRectangle().x + (float)16 && hero.getRectangle().x > guard.getRectangle().x - (float)16 && hero.getRectangle().y > guard.getRectangle().y) {
                 guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardFront.png")));
-                sound.backGroundStop();
-                sound.switchMusicStop();
+                Sound.backGroundStop();
+                Sound.switchMusicStop();
                 map.cleanArrays();
                 resetMap();
 
@@ -223,8 +220,8 @@ public class GameScreen implements Screen {
 
         if (hero.getRectangle().overlaps(guard.getRectangle())){
 
-            sound.backGroundStop();
-            sound.switchMusicStop();
+            Sound.backGroundStop();
+            Sound.switchMusicStop();
             map.cleanArrays();
             resetMap();
 
@@ -237,8 +234,8 @@ public class GameScreen implements Screen {
         if (slave.getRectangle().overlaps(guard.getRectangle())){
 
             resetMap();
-            sound.backGroundStop();
-            sound.switchMusicStop();
+            Sound.backGroundStop();
+            Sound.switchMusicStop();
             map.cleanArrays();
             game.setScreen(new GameOverScreen(game));
 
@@ -267,8 +264,8 @@ public class GameScreen implements Screen {
 
         if (hero.getRectangle().x > (map.getMapArray()[0].length -1) * GameScreen.cellSize){
             /// a imagem de WINNING ESTÁ A APARECER AQUI
-            sound.switchMusicStop();
-            sound.backGroundStop();
+            Sound.switchMusicStop();
+            Sound.backGroundStop();
             resetMap();
             map.cleanArrays();
             game.setScreen(new WinnerScrenn(game));

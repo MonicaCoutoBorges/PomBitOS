@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import org.academiadecodigo.gitbusters.Game2;
+import org.academiadecodigo.gitbusters.Sound.Sound;
 
 public class WinnerScrenn implements Screen {
 
@@ -13,6 +14,7 @@ public class WinnerScrenn implements Screen {
     private static final int WINNING_IMG_HEIGHT = Game2.HEIGHT;
     private static final int WINNING_IMG_Y = 0;
     private static final int WINNING_IMG_X = Game2.WIDTH / 2 - WINNING_IMG_WIDTH / 2;
+
 
     Game2 game;
 
@@ -26,6 +28,8 @@ public class WinnerScrenn implements Screen {
         this.game = game;
 
         winning = new Texture("Victory/Victory.png");
+
+        Sound.menuMusicPlay();
 
 
     }

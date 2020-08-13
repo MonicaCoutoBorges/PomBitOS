@@ -7,38 +7,43 @@ import javax.sound.sampled.spi.AudioFileReader;
 
 public class Sound {
 
-    private Music switchMusic;
-    private Music backgroundMusic;
-    private com.badlogic.gdx.audio.Sound switchSound;
+    private static Music switchMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/switchMusic.mp3"));
+    private static Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/backgroundMusic.mp3"));
+    private static Music menuMusic = Gdx.audio.newMusic(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/MusicAndSounds/MenuMusic.mp3"));
+    private static com.badlogic.gdx.audio.Sound switchSound = Gdx.audio.newSound(Gdx.files.internal("MusicAndSounds/ButtonPress.mp3"));
 
     public Sound(){
-        switchMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/switchMusic.mp3"));
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("MusicAndSounds/backgroundMusic.mp3"));
-        switchSound = Gdx.audio.newSound(Gdx.files.internal("MusicAndSounds/ButtonPress.mp3"));
-
 
     }
 
-    public void lesMiserablesPlay(){
+    public static void lesMiserablesPlay(){
         switchMusic.play();
     }
 
-    public void backgroundPlay(){
+    public static void backgroundPlay(){
         backgroundMusic.setLooping(true);
         backgroundMusic.play();
     }
 
-    public void backGroundStop(){
+    public static void backGroundStop(){
         backgroundMusic.stop();
     }
 
-    public void switchSoundPlay(){
+    public static void switchSoundPlay(){
         switchMusic.setLooping(true);
         switchSound.play();
     }
 
-    public void switchMusicStop(){
+    public static void switchMusicStop(){
         switchMusic.stop();
+    }
+
+    public static void menuMusicPlay(){
+        menuMusic.play();
+    }
+
+    public static void menuMusicStop(){
+        menuMusic.stop();
     }
 
 }

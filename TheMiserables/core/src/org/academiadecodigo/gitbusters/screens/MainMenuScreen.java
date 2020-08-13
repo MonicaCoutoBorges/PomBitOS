@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import org.academiadecodigo.gitbusters.Game2;
+import org.academiadecodigo.gitbusters.Sound.Sound;
 
 public class MainMenuScreen implements Screen {
 
@@ -28,6 +29,7 @@ public class MainMenuScreen implements Screen {
     Texture exitButtonInactive;
 
 
+
     public MainMenuScreen (final Game2 game){
         this.game = game;
         playButtonActive = new Texture("Buttons/PlayActive.png");
@@ -35,6 +37,7 @@ public class MainMenuScreen implements Screen {
         exitButtonActive = new Texture("Buttons/ExitActive.png");
         exitButtonInactive = new Texture("Buttons/ExitInactive.png");
 
+        Sound.menuMusicPlay();
 
 
     }
@@ -74,6 +77,8 @@ public class MainMenuScreen implements Screen {
             game.batch.draw(playButtonActive, xPlayButton , PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
 
             if(Gdx.input.isTouched()) {
+
+                Sound.menuMusicStop();
 
                 game.setScreen(new GameScreen(game));
                 //this.dispose();

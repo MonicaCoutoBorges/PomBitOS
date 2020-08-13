@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import org.academiadecodigo.gitbusters.Game2;
+import org.academiadecodigo.gitbusters.Sound.Sound;
 
 
 public class GameOverScreen implements Screen {
@@ -41,6 +42,7 @@ public class GameOverScreen implements Screen {
     BitmapFont scoreFont;
 
 
+
     public GameOverScreen(Game2 game) {
         this.game = game;
 
@@ -53,6 +55,8 @@ public class GameOverScreen implements Screen {
         tryAgainButtonInactive = new Texture("Buttons/ExitInactive.png");
         mainMenuButtonActive = new Texture("Buttons/ExitActive.png");
         mainMenuButtonInactive = new Texture("Buttons/ExitInactive.png");
+
+        Sound.menuMusicPlay();
     }
     @Override
     public void show() {
@@ -77,6 +81,7 @@ public class GameOverScreen implements Screen {
                 //this.dispose();
                 //game.batch.end();
 
+                Sound.menuMusicStop();
 
                 game.setScreen(new GameScreen(game));
 
