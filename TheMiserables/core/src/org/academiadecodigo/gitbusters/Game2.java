@@ -33,7 +33,7 @@ public class Game2 extends Game {
 
         batch = new SpriteBatch();
 
-        this.setScreen(new GameOverScreen(this));
+        this.setScreen(new MainMenuScreen(this));
 
     }
 
