@@ -20,10 +20,10 @@ public class CellDoor extends AbstractMapObject {
 
     public CellDoor(DoorType doorType){
         if (doorType == DoorType.BLUE) {
-            setImage(new Texture(Gdx.files.internal("Doors/DoorBlue.png")));
+            setImage(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Doors/DoorBlue.png")));
             color = DoorType.BLUE;
         } else if (doorType == DoorType.PINK){
-            setImage(new Texture(Gdx.files.internal("Doors/DoorPink.png")));
+            setImage(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Doors/DoorPink.png")));
             color = DoorType.PINK;
         }
 
