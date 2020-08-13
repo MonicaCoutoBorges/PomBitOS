@@ -205,6 +205,13 @@ public class Game extends ApplicationAdapter {
             }
         }
 
+        if (levelCompleted){
+            for (FinalGate finalGate: map.getFinalGates()){
+                map.getFinalGates().removeValue(finalGate,true);
+                map.getObjects().removeValue(finalGate,true);
+            }
+        }
+
         /**
         if (map.getCellDoors().isEmpty()){
             System.out.println("entrou");
