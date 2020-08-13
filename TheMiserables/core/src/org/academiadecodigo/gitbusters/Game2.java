@@ -16,11 +16,12 @@ import org.academiadecodigo.gitbusters.characters.Slave;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.Objects.*;
 import org.academiadecodigo.gitbusters.screens.MainMenuScreen;
+import org.academiadecodigo.gitbusters.screens.WinnerScrenn;
 
 public class Game2 extends Game {
 
-    public static final int WIDTH = 700;
-    public static final int HEIGHT = 500;
+    public static final int WIDTH = 336;
+    public static final int HEIGHT = 308;
 
 
     public static SpriteBatch batch;
