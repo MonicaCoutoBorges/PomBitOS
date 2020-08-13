@@ -2,6 +2,7 @@ package org.academiadecodigo.gitbusters;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import org.academiadecodigo.gitbusters.screens.GameOverScreen;
 import org.academiadecodigo.gitbusters.screens.MainMenuScreen;
 
 
@@ -17,7 +18,7 @@ public class Game1 extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new GameOverScreen(this));
 
 	}
 	@Override
