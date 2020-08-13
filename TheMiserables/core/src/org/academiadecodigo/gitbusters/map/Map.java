@@ -16,6 +16,7 @@ public class Map {
     private Array<AbstractMapObject> objects;
     private Array<Switch> switches;
     private Array<CellDoor> cellDoors;
+    private Array<FinalGate> finalGates;
     private AbstractMapObject[][] map;
     private SpriteBatch batch;
     private int switchCounter = 0;
@@ -29,6 +30,7 @@ public class Map {
          objects = new Array<AbstractMapObject>();
          cellDoors = new Array<CellDoor>();
          switches = new Array<Switch>();
+         finalGates = new Array<FinalGate>();
     }
 
     public Array<Switch> getSwitches() {
@@ -56,6 +58,10 @@ public class Map {
         return mapArray;
     }
 
+    public Array<FinalGate> getFinalGates() {
+        return finalGates;
+    }
+
     public void drawMap(){
 
         map = new AbstractMapObject[11][12];
@@ -76,12 +82,13 @@ public class Map {
                         break;
                     case 'T':
                         FinalGate finalGate = new FinalGate();
-                        objects.add(finalGate);
                         map[i][j] = finalGate;
                         finalGate.getRectangle().x = j * 28;
                         finalGate.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         finalGate.getRectangle().width = Game.cellSize;
                         finalGate.getRectangle().height = Game.cellSize;
+                        objects.add(finalGate);
+                        finalGates.add(finalGate);
                         batch.draw(finalGate.getImage(),finalGate.getRectangle().x,finalGate.getRectangle().y);
                         break;
                     case 'X':
