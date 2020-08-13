@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import org.academiadecodigo.gitbusters.Game;
+import org.academiadecodigo.gitbusters.Game1;
 import org.academiadecodigo.gitbusters.map.Objects.*;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class Map {
     }
 
     public Map(){
-         this.batch = Game.batch;
+         this.batch = Game1.batch;
          objects = new Array<AbstractMapObject>();
          cellDoors = new Array<CellDoor>();
          switches = new Array<Switch>();

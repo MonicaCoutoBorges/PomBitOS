@@ -7,11 +7,11 @@ import org.academiadecodigo.gitbusters.screens.MainMenuScreen;
 
 public class Game1 extends Game {
 	// window Size  que vai ser utilizada na Class DesktopLauncher utilizando o config.
-	public static final int WIDTH = 500;
-	public static final int HEIGHT = 720;
+	public static final int WIDTH = 336;
+	public static final int HEIGHT = 308;
 
 
-	public SpriteBatch batch;
+	public static SpriteBatch batch;
 
 	
 	@Override

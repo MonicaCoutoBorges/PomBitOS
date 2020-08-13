@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.Game;
+import org.academiadecodigo.gitbusters.Game1;
 
 public class Hero extends AbstractCharacter{
 
@@ -14,10 +15,10 @@ public class Hero extends AbstractCharacter{
 
     public Hero(){
 
-        setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Hero/RevolutionaryFront.png")));
+        setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryFront.png")));
 
         setRectangle(new Rectangle());
-        batch = Game.batch;
+        batch = Game1.batch;
         getRectangle().x = Game.cellSize;
         getRectangle().y = Game.cellSize;
 

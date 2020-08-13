@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.gitbusters.Game;
+import org.academiadecodigo.gitbusters.Game1;
 
 public class Guard extends AbstractCharacter {
 
@@ -12,7 +13,7 @@ public class Guard extends AbstractCharacter {
         setTexture(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Guard/GuardFront.png")));
 
         setRectangle(new Rectangle());
-        batch = Game.batch;
+        batch = Game1.batch;
         getRectangle().x = Game.cellSize * 5;
         getRectangle().y = Game.cellSize * 4;
 
