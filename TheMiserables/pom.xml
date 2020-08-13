@@ -3,9 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>groupId</groupId>
-    <artifactId>TheMiserables</artifactId>
+    <groupId>org.academiadecodigo.gitbusters.TheMiserables</groupId>
+    <artifactId>themiserables</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>The Miserables VideoGame</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +17,7 @@
         <finalName>The Miserables</finalName>
 
         <plugins>
-
+<!---
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -25,8 +27,59 @@
                     <target>10</target>
                 </configuration>
             </plugin>
+!-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        org.academiadecodigo.gitbusters.Game2
+                                    </mainClass>
+                                </manifest>
+                                <executions>
+                                    <execution>
+                                        <id>add-source</id>
+                                        <phase>generate-sources</phase>
+                                        <goals>
+                                            <goal>add-source</goal>
+                                        </goals>
+                                        <configuration>
+                                            <sources>
+                                                <source>/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/src</source>
+                                                <source>/Users/codecadet/Desktop/PomBitOS/TheMiserables/desktop/src</source>
+                                            </sources>
+                                        </configuration>
+                                    </execution>
+                                </executions>
+                            </archive>
+
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
 
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets</directory>
+            </resource>
+        </resources>
     </build>
 
 
