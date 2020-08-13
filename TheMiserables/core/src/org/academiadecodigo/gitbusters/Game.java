@@ -3,11 +3,13 @@ package org.academiadecodigo.gitbusters;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import org.academiadecodigo.gitbusters.Sound.Sound;
 import org.academiadecodigo.gitbusters.characters.Guard;
 import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.characters.Slave;
@@ -43,6 +45,8 @@ public class Game extends ApplicationAdapter {
 
     private boolean slaveEscaped = false;
 
+    private Sound sound;
+
     private GameStatus gameStatus = GameStatus.MAINMENU;
 
 
@@ -63,6 +67,12 @@ public class Game extends ApplicationAdapter {
         this.slave = new Slave();
 
         this.guard = new Guard();
+
+        sound = new Sound();
+
+        sound.backgroundPlay();
+
+
 
 
     }
@@ -189,6 +199,8 @@ public class Game extends ApplicationAdapter {
 
         for (Switch aSwitch : map.getSwitches()) {
             if (hero.getRectangle().overlaps(aSwitch.getRectangle()) && aSwitch.getColor() == Switch.SwitchType.BLUE && !switchOn) {
+                sound.backGroundStop();
+                sound.lesMiserablesPlay();
                 for (CellDoor cellDoor : map.getCellDoors()) {
                     if (cellDoor.getColor() == CellDoor.DoorType.BLUE) {
                         map.getObjects().removeValue(cellDoor,true);
