@@ -16,13 +16,13 @@ public class Game1 extends Game {
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		this.setScreen(new MainMenuScreen(this));
+		//batch = new SpriteBatch();
+		//this.setScreen(new MainMenuScreen(this));
 
 	}
 	@Override
 	public void render () {
-		super.render();
+		//super.render();
 
 	}
 	
