@@ -20,10 +20,10 @@ public class Switch extends AbstractMapObject {
 
     public Switch(SwitchType switchType){
         if (switchType == SwitchType.BLUE) {
-            setImage(new Texture(Gdx.files.internal("Switch/FloorSwitchBlue.png")));
+            setImage(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Switch/FloorSwitchBlue.png")));
             color = SwitchType.BLUE;
         } else if (switchType == SwitchType.PINK){
-            setImage(new Texture(Gdx.files.internal("Switch/FloorSwitchPink.png")));
+            setImage(new Texture(Gdx.files.internal("/Users/codecadet/Desktop/PomBitOS/TheMiserables/core/assets/Switch/FloorSwitchPink.png")));
             color = SwitchType.PINK;
         }
 
