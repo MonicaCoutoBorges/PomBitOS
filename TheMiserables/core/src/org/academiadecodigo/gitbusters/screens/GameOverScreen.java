@@ -24,7 +24,7 @@ public class GameOverScreen implements Screen {
     private static final int TRY_AGAIN_BUTTON_HEIGHT = 24;
     private static final int MAIN_MENU_BUTTON_WIDTH = 130;
     private static final int MAIN_MENU_BUTTON_HEIGHT = 30;
-    private static final int TRY_AGAIN_BUTTON_Y = 125;
+    private static final int TRY_AGAIN_BUTTON_Y = 118;
     private static final int MAIN_MENU_BUTTON_Y = 68;
 
     Texture tryAgainButtonActive;
@@ -76,19 +76,21 @@ public class GameOverScreen implements Screen {
             if(Gdx.input.isTouched()) {
                 //this.dispose();
                 //game.batch.end();
+
+
                 game.setScreen(new GameScreen(game));
 
 
             }
         } else {
-           // game.batch.draw(tryAgainButtonInactive, xTryAgain, TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
+            // game.batch.draw(tryAgainButtonInactive, xTryAgain, TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
         }
 
 
         int xMainMenu = Game2.WIDTH / 2 - MAIN_MENU_BUTTON_WIDTH / 2;
 
         if(Gdx.input.getX() < xMainMenu + MAIN_MENU_BUTTON_WIDTH && Gdx.input.getX() > xMainMenu && Game2.HEIGHT - Gdx.input.getY() < MAIN_MENU_BUTTON_Y + MAIN_MENU_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > MAIN_MENU_BUTTON_Y) {
-           // game.batch.draw(mainMenuButtonActive, xMainMenu , MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);
+            //game.batch.draw(mainMenuButtonActive, xMainMenu , MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);
             if(Gdx.input.isTouched()) {
                 //this.dispose();
                 //game.batch.end();

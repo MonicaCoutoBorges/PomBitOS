@@ -81,6 +81,10 @@ public class GameScreen implements Screen {
 
     }
 
+    public Map getMap() {
+        return map;
+    }
+
     @Override
     public void render(float delta) {
 
@@ -89,7 +93,11 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.begin();
+
+
+
         map.drawMap();
+
         hero.drawCharacter();
         guard.drawCharacter();
         slave.drawCharacter();
@@ -188,7 +196,7 @@ public class GameScreen implements Screen {
         }
 
         if (slave.getRectangle().y == 5 * GameScreen.cellSize && !slaveEscaped) {
-            slave.setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryRight.png")));
+            slave.setTexture(new Texture(Gdx.files.internal("Prisioner/PrisionerRight.png")));
             slave.getRectangle().x += 4;
             if (slave.getRectangle().x > 336){
                 slave.getTexture().dispose();
