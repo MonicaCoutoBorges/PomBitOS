@@ -15,14 +15,19 @@ public class Map {
     private char[][] mapArray;
     private Array<AbstractMapObject> objects;
     private Array<Switch> switches;
+    private Array<CellDoor> cellDoors;
     private AbstractMapObject[][] map;
     private SpriteBatch batch;
+    private int switchCounter = 0;
 
+    public void setMapArray(char[][] mapArray) {
+        this.mapArray = mapArray;
+    }
 
     public Map(){
-         this.mapArray = MapArray.map0;
          this.batch = Game.batch;
          objects = new Array<AbstractMapObject>();
+         cellDoors = new Array<CellDoor>();
          switches = new Array<Switch>();
     }
 
@@ -34,6 +39,10 @@ public class Map {
         return objects;
     }
 
+    public Array<CellDoor> getCellDoors() {
+        return cellDoors;
+    }
+
     public Array<Rectangle> getObjectRectangles(){
         Array<Rectangle> rectangles = new Array<>();
         for (AbstractMapObject object : objects){
@@ -43,10 +52,15 @@ public class Map {
         return rectangles;
     }
 
+    public char[][] getMapArray() {
+        return mapArray;
+    }
+
     public void drawMap(){
 
         map = new AbstractMapObject[11][12];
 
+        this.mapArray = MapArray.map0;
 
         for(int i = mapArray.length-1; i >= 0; i--){
             for(int j = 0; j < mapArray[i].length ; j++){
@@ -60,14 +74,16 @@ public class Map {
                         floor.getRectangle().height = Game.cellSize;
                         batch.draw(floor.getImage(),floor.getRectangle().x,floor.getRectangle().y);
                         break;
-                    /**case 'T':
+                    case 'T':
                         FinalGate finalGate = new FinalGate();
                         objects.add(finalGate);
                         map[i][j] = finalGate;
                         finalGate.getRectangle().x = j * 28;
                         finalGate.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
+                        finalGate.getRectangle().width = Game.cellSize;
+                        finalGate.getRectangle().height = Game.cellSize;
                         batch.draw(finalGate.getImage(),finalGate.getRectangle().x,finalGate.getRectangle().y);
-                        break;*/
+                        break;
                     case 'X':
                         Wall wall = new Wall();
                         map[i][j] = wall;
@@ -79,17 +95,28 @@ public class Map {
                         objects.add(wall);
                         break;
                     case 'Y':
-                        CellDoor cellDoor = new CellDoor();
+                        CellDoor cellDoor;
+                        if (switchCounter == 0) {
+                            cellDoor = new CellDoor(CellDoor.DoorType.BLUE);
+                        } else {
+                            cellDoor = new CellDoor(CellDoor.DoorType.PINK);
+                        }
                         map[i][j] = cellDoor;
                         cellDoor.getRectangle().x = j * 28;
                         cellDoor.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
                         cellDoor.getRectangle().width = Game.cellSize;
                         cellDoor.getRectangle().height = Game.cellSize;
-                        batch.draw(cellDoor.getImage(),cellDoor.getRectangle().x,cellDoor.getRectangle().y);
+                        cellDoors.add(cellDoor);
                         objects.add(cellDoor);
+                        batch.draw(cellDoor.getImage(),cellDoor.getRectangle().x,cellDoor.getRectangle().y);
                         break;
                     case 'K':
-                        Switch aSwitch = new Switch();
+                        Switch aSwitch;
+                        if (switchCounter == 0) {
+                            aSwitch = new Switch(Switch.SwitchType.BLUE);
+                        } else {
+                            aSwitch = new Switch(Switch.SwitchType.PINK);
+                        }
                         map[i][j] = aSwitch;
                         aSwitch.getRectangle().x = j * 28;
                         aSwitch.getRectangle().y = (mapArray.length -1 - i) * Game.cellSize;
@@ -98,6 +125,8 @@ public class Map {
                         switches.add(aSwitch);
                         batch.draw(aSwitch.getImage(),aSwitch.getRectangle().x,aSwitch.getRectangle().y);
                         break;
+                    default:
+                        // System.out.println("I love myself!");
                 }
             }
         }

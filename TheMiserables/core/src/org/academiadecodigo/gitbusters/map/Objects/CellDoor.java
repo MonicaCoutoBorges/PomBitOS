@@ -6,8 +6,27 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class CellDoor extends AbstractMapObject {
 
-    public CellDoor(){
-        setImage(new Texture(Gdx.files.internal("Doors/DoorBlue.png")));
+
+    public enum DoorType{
+        BLUE,
+        PINK
+    }
+
+    private DoorType color;
+
+    public DoorType getColor() {
+        return color;
+    }
+
+    public CellDoor(DoorType doorType){
+        if (doorType == DoorType.BLUE) {
+            setImage(new Texture(Gdx.files.internal("Doors/DoorBlue.png")));
+            color = DoorType.BLUE;
+        } else if (doorType == DoorType.PINK){
+            setImage(new Texture(Gdx.files.internal("Doors/DoorPink.png")));
+            color = DoorType.PINK;
+        }
+
         setRectangle(new Rectangle());
     }
 }
