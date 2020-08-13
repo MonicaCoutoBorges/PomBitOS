@@ -9,6 +9,9 @@ import org.academiadecodigo.gitbusters.Game2;
 
 public class MainMenuScreen implements Screen {
 
+
+
+
     //Buttons Size.. podem ir no 3 5 argumento do draw
     private static final int EXIT_BUTTON_WIDTH = 250;
     private static final int EXIT_BUTTON_HEIGHT = 120;
@@ -51,12 +54,6 @@ public class MainMenuScreen implements Screen {
 
 
         int xExitButton = Game2.WIDTH / 2 - EXIT_BUTTON_WIDTH / 2;
-        //try{
-        //    Thread.sleep(1800);
-        //} catch(InterruptedException ex) {
-
-        //   ex.getMessage();
-        //}
 
         if(Gdx.input.getX() < xExitButton + EXIT_BUTTON_WIDTH && Gdx.input.getX() > xExitButton && Game2.HEIGHT - Gdx.input.getY() < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > EXIT_BUTTON_Y) {
             game.batch.draw(exitButtonActive, xExitButton , EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);

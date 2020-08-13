@@ -1,5 +1,6 @@
 package org.academiadecodigo.gitbusters.screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,20 +11,28 @@ import org.academiadecodigo.gitbusters.Game2;
 
 public class GameOverScreen implements Screen {
 
+
+    private static final int GAMEOVER_IMG_WIDTH = Game2.WIDTH;
+    private static final int GAMEOVER_IMG_HEIGHT = Game2.HEIGHT;
+    private static final int GAMEOVER_IMG_Y = 0;
+    private static final int GAMEOVER_IMG_X = Game2.WIDTH / 2 - GAMEOVER_IMG_WIDTH / 2;
+
     private static final int BANNER_WIDTH = 350;
     private static final int BANNER_HEIGHT = 100;
 
-    private static final int TRY_AGAIN_BUTTON_WIDTH = 250;
-    private static final int TRY_AGAIN_BUTTON_HEIGHT = 120;
-    private static final int MAIN_MENU_BUTTON_WIDTH = 300;
-    private static final int MAIN_MENU_BUTTON_HEIGHT = 120;
-    private static final int TRY_AGAIN_BUTTON_Y = 100;
-    private static final int MAIN_MENU_BUTTON_Y = 230;
+    private static final int TRY_AGAIN_BUTTON_WIDTH = 85;
+    private static final int TRY_AGAIN_BUTTON_HEIGHT = 24;
+    private static final int MAIN_MENU_BUTTON_WIDTH = 130;
+    private static final int MAIN_MENU_BUTTON_HEIGHT = 30;
+    private static final int TRY_AGAIN_BUTTON_Y = 118;
+    private static final int MAIN_MENU_BUTTON_Y = 68;
 
     Texture tryAgainButtonActive;
     Texture tryAgainButtonInactive;
     Texture mainMenuButtonActive;
     Texture mainMenuButtonInactive;
+
+    Texture gameOverImg;
 
     Game2 game;
 
@@ -37,6 +46,9 @@ public class GameOverScreen implements Screen {
 
         //gameOverBanner= new Texture("Buttons/ExitActive.png");
         //scoreFont = new BitmapFont(Gdx.files.internal("fonts/score.fnt"));
+
+        gameOverImg = new Texture("GameOver/GameOver.png");
+
         tryAgainButtonActive = new Texture("Buttons/ExitActive.png");
         tryAgainButtonInactive = new Texture("Buttons/ExitInactive.png");
         mainMenuButtonActive = new Texture("Buttons/ExitActive.png");
@@ -54,27 +66,31 @@ public class GameOverScreen implements Screen {
         //GlyphLayout tryAgainLayout = new GlyphLayout(scoreFont, "Try Again");
         //GlyphLayout mainMenuLayout = new GlyphLayout(scoreFont, "Main Menu");
 
+        game.batch.draw(gameOverImg, GAMEOVER_IMG_X, GAMEOVER_IMG_Y, GAMEOVER_IMG_WIDTH, GAMEOVER_IMG_HEIGHT);
+
 
         int xTryAgain = Game2.WIDTH / 2 - TRY_AGAIN_BUTTON_WIDTH / 2;
 
         if(Gdx.input.getX() < xTryAgain + TRY_AGAIN_BUTTON_WIDTH && Gdx.input.getX() > xTryAgain && Game2.HEIGHT - Gdx.input.getY() < TRY_AGAIN_BUTTON_Y + TRY_AGAIN_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > TRY_AGAIN_BUTTON_Y) {
-            game.batch.draw(tryAgainButtonActive, xTryAgain , TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
+           // game.batch.draw(tryAgainButtonActive, xTryAgain , TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
             if(Gdx.input.isTouched()) {
                 //this.dispose();
                 //game.batch.end();
+
+
                 game.setScreen(new GameScreen(game));
 
 
             }
         } else {
-            game.batch.draw(tryAgainButtonInactive, xTryAgain, TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
+            // game.batch.draw(tryAgainButtonInactive, xTryAgain, TRY_AGAIN_BUTTON_Y, TRY_AGAIN_BUTTON_WIDTH, TRY_AGAIN_BUTTON_HEIGHT);
         }
 
 
         int xMainMenu = Game2.WIDTH / 2 - MAIN_MENU_BUTTON_WIDTH / 2;
 
         if(Gdx.input.getX() < xMainMenu + MAIN_MENU_BUTTON_WIDTH && Gdx.input.getX() > xMainMenu && Game2.HEIGHT - Gdx.input.getY() < MAIN_MENU_BUTTON_Y + MAIN_MENU_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > MAIN_MENU_BUTTON_Y) {
-            game.batch.draw(mainMenuButtonActive, xMainMenu , MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);
+            //game.batch.draw(mainMenuButtonActive, xMainMenu , MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);
             if(Gdx.input.isTouched()) {
                 //this.dispose();
                 //game.batch.end();
@@ -87,7 +103,7 @@ public class GameOverScreen implements Screen {
 
             }
         } else {
-            game.batch.draw(mainMenuButtonInactive, xMainMenu, MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);
+          //  game.batch.draw(mainMenuButtonInactive, xMainMenu, MAIN_MENU_BUTTON_Y, MAIN_MENU_BUTTON_WIDTH, MAIN_MENU_BUTTON_HEIGHT);
         }
         game.batch.end();
     }

@@ -15,13 +15,15 @@ import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.characters.Slave;
 import org.academiadecodigo.gitbusters.map.Map;
 import org.academiadecodigo.gitbusters.map.Objects.*;
+import org.academiadecodigo.gitbusters.screens.GameOverScreen;
+import org.academiadecodigo.gitbusters.screens.GameScreen;
 import org.academiadecodigo.gitbusters.screens.MainMenuScreen;
 import org.academiadecodigo.gitbusters.screens.WinnerScrenn;
 
 public class Game2 extends Game {
 
     public static final int WIDTH = 336;
-    public static final int HEIGHT = 330;
+    public static final int HEIGHT = 308;
 
 
     public static SpriteBatch batch;
@@ -33,9 +35,12 @@ public class Game2 extends Game {
     public void create() {
 
         batch = new SpriteBatch();
-        this.setScreen(new MainMenuScreen(this));
+
+        this.setScreen(new GameOverScreen(this));
 
     }
+
+    //someone there ?
 
     @Override
     public void render() {
