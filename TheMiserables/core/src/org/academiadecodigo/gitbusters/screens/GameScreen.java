@@ -14,6 +14,7 @@ import org.academiadecodigo.gitbusters.characters.Guard;
 import org.academiadecodigo.gitbusters.characters.Hero;
 import org.academiadecodigo.gitbusters.characters.Slave;
 import org.academiadecodigo.gitbusters.map.Map;
+import org.academiadecodigo.gitbusters.map.MapArray;
 import org.academiadecodigo.gitbusters.map.Objects.AbstractMapObject;
 import org.academiadecodigo.gitbusters.map.Objects.CellDoor;
 import org.academiadecodigo.gitbusters.map.Objects.FinalGate;
@@ -56,11 +57,8 @@ public class GameScreen implements Screen {
 
 
     public GameScreen (Game2 game){
-        this.game = game;
-    }
 
-    @Override
-    public void show() {
+        this.game = game;
 
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -78,6 +76,13 @@ public class GameScreen implements Screen {
 
         sound.backgroundPlay();
 
+        map.setMapArray(MapArray.map0);
+
+    }
+
+    @Override
+    public void show() {
+
 
     }
 
@@ -94,76 +99,16 @@ public class GameScreen implements Screen {
 
         game.batch.begin();
 
-
-
         map.drawMap();
-
         hero.drawCharacter();
         guard.drawCharacter();
         slave.drawCharacter();
 
-
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-
-            hero.setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryBack.png")));
-            float y = hero.getRectangle().y;
-            hero.getRectangle().y += (float) GameScreen.cellSize / 4;
-            for (AbstractMapObject object : map.getObjects()) {
-                if (hero.getRectangle().overlaps(object.getRectangle())) {
-                    hero.getRectangle().y = y;
-                }
+        if (levelCompleted){
+            for (FinalGate finalGate: map.getFinalGates()){
+                map.getFinalGates().removeValue(finalGate,true);
+                map.getObjects().removeValue(finalGate,true);
             }
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-
-            hero.setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryFront.png")));
-            float y = hero.getRectangle().y;
-            hero.getRectangle().y -= (float) GameScreen.cellSize / 4;
-            for (AbstractMapObject object : map.getObjects()) {
-                if (hero.getRectangle().overlaps(object.getRectangle())) {
-                    hero.getRectangle().y = y;
-                }
-            }
-        }
-
-        if (guard.getRectangle().y != GameScreen.cellSize && guardMovingDown){
-            guard.getRectangle().y -= 2;
-            if(hero.getRectangle().x < guard.getRectangle().x + (float)16 && hero.getRectangle().x > guard.getRectangle().x - (float)16 && hero.getRectangle().y < guard.getRectangle().y) {
-                guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardBack.png")));
-
-                game.setScreen(new GameOverScreen(game));
-                // System.exit(420);
-            }
-        }
-
-        if (guard.getRectangle().y == cellSize){
-            guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardBack.png")));
-            guardMovingDown = false;
-        }
-
-        if (guard.getRectangle().y != 5 * cellSize && !guardMovingDown){
-            guard.getRectangle().y += 2;
-            if(hero.getRectangle().x < guard.getRectangle().x + (float)16 && hero.getRectangle().x > guard.getRectangle().x - (float)16 && hero.getRectangle().y > guard.getRectangle().y) {
-                guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardFront.png")));
-
-                game.setScreen(new GameOverScreen(game));
-                //System.exit(420);
-            }
-        }
-
-
-
-        if (guard.getRectangle().y == 5 * cellSize){
-            guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardFront.png")));
-            guardMovingDown = true;
-        }
-
-        if (hero.getRectangle().overlaps(guard.getRectangle())){
-
-
-            game.setScreen(new GameOverScreen(game));
-            //System.exit(1);
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
@@ -178,35 +123,6 @@ public class GameScreen implements Screen {
                 }
             }
         }
-
-        if (slave.getRectangle().overlaps(guard.getRectangle())){
-
-            game.setScreen(new GameOverScreen(game));
-
-            //System.exit(1);
-        }
-
-        if (levelCompleted && slave.getRectangle().y > 5 * GameScreen.cellSize) {
-            slave.getRectangle().y -= 4;
-            /**
-             if (!guardMovingDown && slave.getRectangle().x == guard.getRectangle().x) {
-             System.exit(420);
-             }
-             */
-        }
-
-        if (slave.getRectangle().y == 5 * GameScreen.cellSize && !slaveEscaped) {
-            slave.setTexture(new Texture(Gdx.files.internal("Prisioner/PrisionerRight.png")));
-            slave.getRectangle().x += 4;
-            if (slave.getRectangle().x > 336){
-                slave.getTexture().dispose();
-                Rectangle rectangle = slave.getRectangle();
-                rectangle = null;
-                slaveEscaped = true;
-            }
-        }
-
-        // if ()
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
 
@@ -242,17 +158,123 @@ public class GameScreen implements Screen {
             }
         }
 
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+
+            hero.setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryBack.png")));
+            float y = hero.getRectangle().y;
+            hero.getRectangle().y += (float) GameScreen.cellSize / 4;
+            for (AbstractMapObject object : map.getObjects()) {
+                if (hero.getRectangle().overlaps(object.getRectangle())) {
+                    hero.getRectangle().y = y;
+                }
+            }
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+
+            hero.setTexture(new Texture(Gdx.files.internal("Hero/RevolutionaryFront.png")));
+            float y = hero.getRectangle().y;
+            hero.getRectangle().y -= (float) GameScreen.cellSize / 4;
+            for (AbstractMapObject object : map.getObjects()) {
+                if (hero.getRectangle().overlaps(object.getRectangle())) {
+                    hero.getRectangle().y = y;
+                }
+            }
+        }
+
+        if (guard.getRectangle().y != GameScreen.cellSize && guardMovingDown){
+            guard.getRectangle().y -= 2;
+            if(hero.getRectangle().x < guard.getRectangle().x + (float)16 && hero.getRectangle().x > guard.getRectangle().x - (float)16 && hero.getRectangle().y < guard.getRectangle().y) {
+                guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardBack.png")));
+                sound.backGroundStop();
+                sound.switchMusicStop();
+                map.cleanArrays();
+                resetMap();
+                game.setScreen(new GameOverScreen(game));
+                // System.exit(420);
+            }
+        }
+
+        if (guard.getRectangle().y == cellSize){
+            guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardBack.png")));
+            guardMovingDown = false;
+        }
+
+        if (guard.getRectangle().y != 5 * cellSize && !guardMovingDown){
+            guard.getRectangle().y += 2;
+            if(hero.getRectangle().x < guard.getRectangle().x + (float)16 && hero.getRectangle().x > guard.getRectangle().x - (float)16 && hero.getRectangle().y > guard.getRectangle().y) {
+                guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardFront.png")));
+                sound.backGroundStop();
+                sound.switchMusicStop();
+                map.cleanArrays();
+                resetMap();
+
+                game.setScreen(new GameOverScreen(game));
+                //System.exit(420);
+            }
+        }
+
+
+
+        if (guard.getRectangle().y == 5 * cellSize){
+            guard.setTexture(new Texture(Gdx.files.internal("Guard/GuardFront.png")));
+            guardMovingDown = true;
+        }
+
+        if (hero.getRectangle().overlaps(guard.getRectangle())){
+
+            sound.backGroundStop();
+            sound.switchMusicStop();
+            map.cleanArrays();
+            resetMap();
+
+            game.setScreen(new GameOverScreen(game));
+            //System.exit(1);
+        }
+
+
+
+        if (slave.getRectangle().overlaps(guard.getRectangle())){
+
+            resetMap();
+            sound.backGroundStop();
+            sound.switchMusicStop();
+            map.cleanArrays();
+            game.setScreen(new GameOverScreen(game));
+
+            //System.exit(1);
+        }
+
+        if (levelCompleted && slave.getRectangle().y > 5 * GameScreen.cellSize) {
+            slave.getRectangle().y -= 4;
+            /**
+             if (!guardMovingDown && slave.getRectangle().x == guard.getRectangle().x) {
+             System.exit(420);
+             }
+             */
+        }
+
+        if (slave.getRectangle().y == 5 * GameScreen.cellSize && !slaveEscaped) {
+            slave.setTexture(new Texture(Gdx.files.internal("Prisioner/PrisionerRight.png")));
+            slave.getRectangle().x += 4;
+            if (slave.getRectangle().x > 336){
+                slave.getTexture().dispose();
+                Rectangle rectangle = slave.getRectangle();
+                rectangle = null;
+                slaveEscaped = true;
+            }
+        }
+
         if (hero.getRectangle().x > (map.getMapArray()[0].length -1) * GameScreen.cellSize){
-/// a imagem de WINNING ESTÁ A APARECER AQUI
+            /// a imagem de WINNING ESTÁ A APARECER AQUI
+            sound.switchMusicStop();
+            sound.switchMusicStop();
+            resetMap();
+            map.cleanArrays();
             game.setScreen(new WinnerScrenn(game));
         }
 
-        if (levelCompleted){
-            for (FinalGate finalGate: map.getFinalGates()){
-                map.getFinalGates().removeValue(finalGate,true);
-                map.getObjects().removeValue(finalGate,true);
-            }
-        }
+
 
         /**
          if (map.getCellDoors().isEmpty()){
@@ -270,6 +292,13 @@ public class GameScreen implements Screen {
 
 
         game.batch.end();
+    }
+
+    public void resetMap(){
+        map.getMapArray()[4][5] = 'Y';
+        map.getMapArray()[4][11] = 'T';
+        map.getMapArray()[5][11] = 'T';
+        map.getMapArray()[6][11] = 'T';
     }
 
     @Override

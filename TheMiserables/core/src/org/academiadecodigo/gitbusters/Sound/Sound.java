@@ -33,7 +33,12 @@ public class Sound {
     }
 
     public void switchSoundPlay(){
+        switchMusic.setLooping(true);
         switchSound.play();
+    }
+
+    public void switchMusicStop(){
+        switchMusic.stop();
     }
 
 }

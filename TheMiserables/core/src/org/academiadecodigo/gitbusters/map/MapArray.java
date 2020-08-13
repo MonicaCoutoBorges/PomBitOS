@@ -2,7 +2,7 @@ package org.academiadecodigo.gitbusters.map;
 
 public class MapArray {
 
-    public static char[][] map0 = {
+    public final static char[][] map0 = {
             //1   2   3   4   5   6   7   8   9  10   11  12
             {'X','X','X','X','X','X','X','X','X','X','X','X'},
             {'X','X','_','X','X','_','_','X','X','_','X','X'},
@@ -18,7 +18,7 @@ public class MapArray {
             // 11 rows
     };
 
-    public static char[][] map1 = {
+    public final static char[][] map1 = {
 
             //1   2   3   4   5   6   7   8   9  10   11  12 13
             {'X','X','X','X','X','X','X','X','X','X','X','X','X'},
@@ -37,7 +37,7 @@ public class MapArray {
     };
 
 
-    public static char[][] map2 = {
+    public final static char[][] map2 = {
 
             //1   2   3   4   5   6   7   8   9  10   11  12 13  14   15  16  17  18  19  20  21  22  23  24  25  26
             {'X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'},

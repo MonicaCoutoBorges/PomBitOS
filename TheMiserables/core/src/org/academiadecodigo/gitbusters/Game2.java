@@ -1,9 +1,6 @@
 package org.academiadecodigo.gitbusters;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -55,5 +52,15 @@ public class Game2 extends Game {
 
         batch.dispose();
 
+    }
+
+    @Override
+    public void setScreen (Screen screen) {
+        if (this.screen != null) this.screen.hide();
+        this.screen = screen;
+        if (this.screen != null) {
+            this.screen.show();
+            this.screen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        }
     }
 }
