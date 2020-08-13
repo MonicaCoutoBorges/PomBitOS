@@ -19,8 +19,8 @@ import org.academiadecodigo.gitbusters.screens.MainMenuScreen;
 
 public class Game2 extends Game {
 
-    public static final int WIDTH = 336;
-    public static final int HEIGHT = 308;
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 500;
 
 
     public static SpriteBatch batch;
