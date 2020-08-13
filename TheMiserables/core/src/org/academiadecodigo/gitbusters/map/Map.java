@@ -62,9 +62,9 @@ public class Map {
 
     public void drawMap(){
 
-        map = new AbstractMapObject[11][12];
+        map = new AbstractMapObject[12][13];//map = new AbstractMapObject[11][12];
 
-        this.mapArray = MapArray.map0;
+        this.mapArray = MapArray.map0; //this.mapArray = MapArray.map0;
 
         for(int i = mapArray.length-1; i >= 0; i--){
             for(int j = 0; j < mapArray[i].length ; j++){
