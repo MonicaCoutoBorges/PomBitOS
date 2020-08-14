@@ -27,7 +27,7 @@ public class WinnerScrenn implements Screen {
 
         this.game = game;
 
-        winning = new Texture("Victory/Victory.png");
+        winning = new Texture(Gdx.files.internal("Victory/Victory.png"));
 
         Sound.menuMusicPlay();
 

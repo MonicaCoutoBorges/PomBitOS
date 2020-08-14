@@ -18,12 +18,12 @@ public class MainMenuScreen implements Screen {
     private static final int MAINMENU_IMG_X = Game2.WIDTH / 2 - MAINMENU_IMG_WIDTH / 2;
 
     //Buttons Size.. podem ir no 3 5 argumento do draw
-    private static final int EXIT_BUTTON_WIDTH = 90;
+    private static final int EXIT_BUTTON_WIDTH = 50;
     private static final int EXIT_BUTTON_HEIGHT = 28;
     private static final int PLAY_BUTTON_WIDTH = 130;
     private static final int PLAY_BUTTON_HEIGHT = 28;
-    private static final int EXIT_BUTTON_Y = 68;
-    private static final int PLAY_BUTTON_Y = 118;
+    private static final int EXIT_BUTTON_Y = 35;
+    private static final int PLAY_BUTTON_Y = 115;
 
     final Game2 game;
 
@@ -39,12 +39,12 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen (final Game2 game){
         this.game = game;
 
-        mainMenuImg = new Texture("Menu/Screen Shot 2020-08-13 at 19.58.47.png");
+        mainMenuImg = new Texture(Gdx.files.internal("Menu/TheMiserables.png"));
 
-        playButtonActive = new Texture("Buttons/PlayActive.png");
-        playButtonInactive = new Texture("Buttons/PlayInactive.png");
-        exitButtonActive = new Texture("Buttons/ExitActive.png");
-        exitButtonInactive = new Texture("Buttons/ExitInactive.png");
+        playButtonActive = new Texture(Gdx.files.internal("Buttons/PlayActive.png"));
+        playButtonInactive = new Texture(Gdx.files.internal("Buttons/PlayInactive.png"));
+        exitButtonActive = new Texture(Gdx.files.internal("Buttons/ExitActive.png"));
+        exitButtonInactive = new Texture(Gdx.files.internal("Buttons/ExitInactive.png"));
 
         Sound.menuMusicPlay();
 
@@ -70,7 +70,7 @@ public class MainMenuScreen implements Screen {
         int xExitButton = Game2.WIDTH / 2 - EXIT_BUTTON_WIDTH / 2;
 
         if(Gdx.input.getX() < xExitButton + EXIT_BUTTON_WIDTH && Gdx.input.getX() > xExitButton && Game2.HEIGHT - Gdx.input.getY() < EXIT_BUTTON_Y + EXIT_BUTTON_HEIGHT && Game2.HEIGHT - Gdx.input.getY() > EXIT_BUTTON_Y) {
-            //game.batch.draw(exitButtonActive, xExitButton , EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+           // game.batch.draw(exitButtonActive, xExitButton , EXIT_BUTTON_Y, EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
 
             if(Gdx.input.isTouched()){
                 Gdx.app.exit();

@@ -49,12 +49,12 @@ public class GameOverScreen implements Screen {
         //gameOverBanner= new Texture("Buttons/ExitActive.png");
         //scoreFont = new BitmapFont(Gdx.files.internal("fonts/score.fnt"));
 
-        gameOverImg = new Texture("GameOver/GameOver.png");
+        gameOverImg = new Texture(Gdx.files.internal("GameOver/GameOver.png"));
 
-        tryAgainButtonActive = new Texture("Buttons/ExitActive.png");
-        tryAgainButtonInactive = new Texture("Buttons/ExitInactive.png");
-        mainMenuButtonActive = new Texture("Buttons/ExitActive.png");
-        mainMenuButtonInactive = new Texture("Buttons/ExitInactive.png");
+        tryAgainButtonActive = new Texture(Gdx.files.internal("Buttons/ExitActive.png"));
+        tryAgainButtonInactive = new Texture(Gdx.files.internal("Buttons/ExitInactive.png"));
+        mainMenuButtonActive = new Texture(Gdx.files.internal("Buttons/ExitActive.png"));
+        mainMenuButtonInactive = new Texture(Gdx.files.internal("Buttons/ExitInactive.png"));
 
         Sound.menuMusicPlay();
     }
